@@ -1,0 +1,160 @@
+.intro-scene .intro-lines {
+    display: grid;
+    gap: 6px;
+    max-width: 700px;
+    margin: 24px auto;
+    color: #66545a
+}
+
+.intro-scene .primary {
+    margin-top: 30px
+}
+
+.intro-scene .tiny {
+    font-size: 12px;
+    color: #947b83;
+    margin-top: 13px
+}
+
+.year-scene .year-number {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(84px, 18vw, 190px);
+    line-height: .8;
+    color: rgba(204, 77, 109, .13);
+    margin-bottom: -28px;
+    user-select: none
+}
+
+.year-scene .story-lines {
+    background: rgba(255, 255, 255, .42);
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    padding: 20px clamp(18px, 4vw, 36px);
+    backdrop-filter: blur(12px)
+}
+
+.month-scene .scene-inner {
+    width: min(1240px, 100%)
+}
+
+.month-scene h2 {
+    margin-bottom: 6px
+}
+
+.month-note {
+    max-width: 760px;
+    margin: 14px auto 0;
+    color: #66555a
+}
+
+.month-scene .media-rail {
+    margin-inline: calc(50% - 50vw);
+    width: 100vw
+}
+
+.month-scene[data-year="2024"] .media-card:nth-child(3n+1),
+.month-scene[data-year="2026"] .media-card:nth-child(3n+1) {
+    transform: rotate(-1deg)
+}
+
+.month-scene[data-year="2024"] .media-card:nth-child(3n+2),
+.month-scene[data-year="2025"] .media-card:nth-child(3n+2) {
+    transform: rotate(.8deg)
+}
+
+.month-scene .media-card:hover {
+    transform: translateY(-5px) rotate(0)
+}
+
+.birthday-scene {
+    background: radial-gradient(circle at 50% 20%, rgba(255, 255, 255, .7), rgba(255, 231, 239, .6))
+}
+
+.letter-card {
+    max-width: 800px;
+    margin: 25px auto 0;
+    padding: clamp(24px, 5vw, 44px);
+    text-align: left;
+    background: rgba(255, 255, 255, .67);
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(12px)
+}
+
+.letter-card p {
+    margin-top: 15px
+}
+
+.letter-card p:first-child {
+    margin-top: 0
+}
+
+.letter-card .signature {
+    font-family: 'Dancing Script', cursive;
+    font-size: 26px;
+    color: #c55370;
+    margin-top: 24px
+}
+
+.future-scene .future-frame {
+    max-width: 560px;
+    margin: 24px auto 0;
+    padding: 12px 12px 24px;
+    background: rgba(255, 255, 255, .72);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    transform: rotate(-1.5deg)
+}
+
+.future-scene .future-frame img {
+    width: 100%;
+    max-height: 55vh;
+    object-fit: cover;
+    border-radius: 3px
+}
+
+.future-punch {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(25px, 4vw, 36px);
+    color: #c64e6c;
+    margin-top: 14px
+}
+
+.future-ending {
+    max-width: 700px;
+    margin: 20px auto 0;
+    color: #66545a
+}
+
+.future-scene .heart-button {
+    width: 86px;
+    height: 86px;
+    margin-top: 26px;
+    border-radius: 50%;
+    border: 1px solid rgba(201, 79, 112, .2);
+    background: rgba(255, 255, 255, .62);
+    font-family: 'Dancing Script', cursive;
+    font-size: 48px;
+    color: #db6682;
+    cursor: pointer;
+    box-shadow: 0 15px 38px rgba(161, 73, 96, .13);
+    transition: .35s
+}
+
+.future-scene .heart-button:hover {
+    transform: scale(1.07)
+}
+
+.future-reveal {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 1s var(--ease), opacity .8s ease
+}
+
+.future-reveal.show {
+    max-height: 900px;
+    opacity: 1;
+    margin-top: 14px
+}

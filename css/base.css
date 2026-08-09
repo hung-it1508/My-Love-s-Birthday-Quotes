@@ -1,0 +1,252 @@
+:root {
+  --rose: #ed6f8e;
+  --rose-dark: #c94f70;
+  --ink: #463a3e;
+  --muted: #816f75;
+  --cream: #fffaf8;
+  --glass: rgba(255, 255, 255, .66);
+  --line: rgba(131, 74, 91, .14);
+  --shadow: 0 24px 68px rgba(135, 72, 89, .14);
+  --ease: cubic-bezier(.22, .75, .2, 1)
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%
+}
+
+html {
+  background: #fff6f7
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--ink);
+  background: linear-gradient(135deg, #fff7f7 0%, #ffeef3 46%, #fff9f2 100%);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased
+}
+
+button {
+  font: inherit
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%
+}
+
+button:focus-visible {
+  outline: 2px solid var(--rose-dark);
+  outline-offset: 3px
+}
+
+.ambient,
+.particles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden
+}
+
+.ambient {
+  z-index: 0
+}
+
+.particles {
+  z-index: 70
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(48px);
+  opacity: .43;
+  animation: drift 16s ease-in-out infinite alternate
+}
+
+.orb-one {
+  width: 42vw;
+  height: 42vw;
+  background: #ffc5d3;
+  left: -12vw;
+  top: -12vw
+}
+
+.orb-two {
+  width: 38vw;
+  height: 38vw;
+  background: #ffe0b9;
+  right: -12vw;
+  bottom: -13vw;
+  animation-delay: -4s
+}
+
+.orb-three {
+  width: 25vw;
+  height: 25vw;
+  background: #e4c9ff;
+  right: 18vw;
+  top: 12vh;
+  opacity: .2;
+  animation-delay: -8s
+}
+
+@keyframes drift {
+  to {
+    transform: translate3d(5vw, 4vh, 0) scale(1.08)
+  }
+}
+
+#experience {
+  position: relative;
+  z-index: 2;
+  width: 100vw;
+  height: 100dvh;
+  overflow: hidden
+}
+
+.scene-root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden
+}
+
+.scene-shell {
+  width: 100%;
+  height: 100%;
+  padding: 84px 24px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  transform: none;
+  filter: none
+}
+
+.scene-shell.entering {
+  animation: sceneIn .72s var(--ease) both
+}
+
+.scene-shell.leaving {
+  animation: sceneOut .32s ease both
+}
+
+@keyframes sceneIn {
+  from {
+    opacity: 0;
+    transform: translateX(4vw) scale(1.018);
+    filter: blur(8px)
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none
+  }
+}
+
+@keyframes sceneOut {
+  to {
+    opacity: 0;
+    transform: translateX(-3vw) scale(.985);
+    filter: blur(6px)
+  }
+}
+
+.scene-inner {
+  width: min(1120px, 100%);
+  max-height: 100%;
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  padding: 8px 4px 28px;
+  text-align: center
+}
+
+.scene-inner.narrow {
+  width: min(760px, 100%)
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: .22em;
+  font-size: 10px;
+  font-weight: 600;
+  color: #a37d88;
+  margin-bottom: 15px
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Dancing Script', cursive;
+  color: var(--rose-dark);
+  font-weight: 600;
+  line-height: 1.05
+}
+
+h1 {
+  font-size: clamp(48px, 8vw, 86px)
+}
+
+h2 {
+  font-size: clamp(40px, 6vw, 68px)
+}
+
+h3 {
+  font-size: clamp(30px, 4.2vw, 46px)
+}
+
+p {
+  font-size: clamp(15px, 2vw, 18px);
+  line-height: 1.75
+}
+
+.lead {
+  font-size: clamp(17px, 2.2vw, 21px);
+  max-width: 720px;
+  margin: 22px auto 0
+}
+
+.muted {
+  color: var(--muted)
+}
+
+.soft-heart {
+  display: inline-block;
+  animation: pulse 1.8s ease-in-out infinite
+}
+
+@keyframes pulse {
+  50% {
+    transform: scale(1.15)
+  }
+}
+
+.hidden {
+  opacity: 0 !important;
+  pointer-events: none !important
+}
+
+.particle {
+  position: absolute;
+  bottom: -30px;
+  animation: floatUp linear forwards;
+  opacity: .8
+}
+
+@keyframes floatUp {
+  to {
+    transform: translateY(-115vh) rotate(30deg);
+    opacity: 0
+  }
+}
