@@ -1,11 +1,5 @@
 # Birthday Story V3 — Data-driven Timeline
-
-Bản V3 tách **nội dung**, **media** và **giao diện** để `index.html` không bị phình to dù dùng toàn bộ ảnh/video.
-
 ## Chạy project
-
-Khuyên dùng VS Code + **Live Server**, mở `index.html`.
-
 ## Cấu trúc
 
 ```text
@@ -92,10 +86,3 @@ Trong `index.html`, thay URL trong `<audio id="music">` bằng file nhạc của
 <source src="assets/audio/our-song.mp3" type="audio/mpeg" />
 ```
 
-## Ghi chú
-
-- Toàn bộ **114 media gốc trong image.zip** đã được đưa vào timeline.
-- Ảnh cưới AI được đổi tên an toàn thành `assets/media/special/ai-wedding.jpg`.
-- Ảnh/video trong một tháng được hiển thị thành film strip; click để mở full-screen.
-- Có nút nhảy nhanh 2023 / 2024 / 2025 / 2026.
-- Mobile có swipe ngang để xem ảnh trong từng tháng.

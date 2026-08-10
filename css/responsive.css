@@ -1,116 +1,79 @@
-@media(max-width:760px) {
-  .scene-shell {
-    padding: 78px 16px 34px
-  }
+/* Laptop 13 inch / iPad 11 inch landscape */
+@media (min-width: 761px) and (max-width: 1366px) {
+  .scene-shell { padding: 62px 18px 12px; }
+  .scene-inner { padding-bottom: 7px; }
+  h1 { font-size: clamp(46px, 5vw, 64px); }
+  h2 { font-size: clamp(36px, 4vw, 48px); }
+
+  .moment-head h2 { font-size: clamp(32px, 3.6vw, 46px); }
+  .moment-copy { margin-top: 8px; padding: 9px 16px; gap: 5px; }
+  .moment-copy p { font-size: 14px; line-height: 1.45; }
+  .moment-scene .media-rail { grid-auto-columns: clamp(150px, 17vw, 195px); padding-top: 6px; padding-bottom: 7px; }
+  .scene-nav { margin-top: 9px; }
+  .year-scene .year-number { font-size: clamp(80px, 13vw, 145px); }
+  .letter-card { padding: 18px 24px; }
+  .letter-card p { font-size: 14px; line-height: 1.5; }
+}
+
+@media (max-width: 760px) {
+  .scene-shell { padding: 78px 16px 24px; }
 
   .chrome-row {
     grid-template-columns: 1fr auto;
     padding: 0 12px;
-    height: 56px
+    height: 56px;
   }
 
   .year-nav {
-    grid-column: 1/-1;
+    grid-column: 1 / -1;
     grid-row: 2;
     justify-self: center;
     margin-top: -8px;
     transform: scale(.94);
-    transform-origin: center
+    transform-origin: center;
   }
 
-  .chapter-label {
-    display: none
-  }
-
-  .icon-btn {
-    grid-column: 2;
-    grid-row: 1
-  }
-
-  .chrome {
-    height: 74px
-  }
+  .chapter-label { display: none; }
+  .icon-btn { grid-column: 2; grid-row: 1; }
+  .chrome { height: 74px; }
 
   .media-rail {
     grid-auto-columns: 72vw;
     padding-inline: 14vw;
-    gap: 12px
+    gap: 12px;
   }
 
-  .swipe-hint {
-    display: block
-  }
+  .swipe-hint { display: block; }
+  .scene-nav { margin-top: 14px; }
+  .year-scene .year-number { margin-bottom: -17px; }
+  .lightbox { padding: 54px 10px 18px; }
+  .letter-card { padding: 20px 18px; }
+  .future-scene .future-frame img { max-height: 48vh; }
 
-  .scene-nav {
-    margin-top: 20px
-  }
-
-  .year-scene .year-number {
-    margin-bottom: -17px
-  }
-
-  .lightbox {
-    padding: 54px 10px 18px
-  }
-
-  .letter-card {
-    padding: 22px 19px
-  }
-
-  .future-scene .future-frame img {
-    max-height: 48vh
-  }
+  .moment-context { letter-spacing: .11em; }
+  .moment-copy { padding: 12px 14px; }
+  .moment-copy p { font-size: 14px; line-height: 1.52; }
+  .moment-head h2 { font-size: clamp(32px, 8vw, 43px); }
 }
 
-@media(max-width:430px) {
-  h1 {
-    font-size: 48px
-  }
-
-  h2 {
-    font-size: 40px
-  }
-
-  .lead {
-    font-size: 16px
-  }
-
-  .year-pill {
-    padding: 6px 9px
-  }
-
-  .media-rail {
-    grid-auto-columns: 78vw;
-    padding-inline: 11vw
-  }
-
-  .scene-shell {
-    padding-inline: 12px
-  }
-
-  .month-note {
-    font-size: 14px
-  }
-
-  .story-ending {
-    font-size: 15px
-  }
-
-  .future-scene .heart-button {
-    width: 76px;
-    height: 76px;
-    font-size: 42px
-  }
+@media (max-width: 430px) {
+  h1 { font-size: 46px; }
+  h2 { font-size: 38px; }
+  .lead { font-size: 16px; }
+  .year-pill { padding: 6px 9px; }
+  .media-rail { grid-auto-columns: 78vw; padding-inline: 11vw; }
+  .scene-shell { padding-inline: 12px; }
+  .story-ending { font-size: 15px; }
+  .future-scene .heart-button { width: 76px; height: 76px; font-size: 42px; }
+  .moment-copy { padding: 10px 12px; }
+  .moment-copy p { font-size: 13.8px; }
 }
 
-@media(prefers-reduced-motion:reduce) {
-
-  *,
-  *:before,
-  *:after {
+@media (prefers-reduced-motion: reduce) {
+  *, *:before, *:after {
     animation-duration: .01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: .01ms !important;
-    scroll-behavior: auto !important
+    scroll-behavior: auto !important;
   }
 }
