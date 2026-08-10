@@ -1,4 +1,4 @@
-# Birthday Story V3 — Data-driven Timeline
+# Birthday Story
 ## Chạy project
 ## Cấu trúc
 
