@@ -20,16 +20,16 @@
   let started = false;
 
   const monthNames = {
-    1:'Tháng Một', 2:'Tháng Hai', 3:'Tháng Ba', 4:'Tháng Tư', 5:'Tháng Năm', 6:'Tháng Sáu',
-    7:'Tháng Bảy', 8:'Tháng Tám', 9:'Tháng Chín', 10:'Tháng Mười', 11:'Tháng Mười Một', 12:'Tháng Mười Hai'
+    1: 'Tháng Một', 2: 'Tháng Hai', 3: 'Tháng Ba', 4: 'Tháng Tư', 5: 'Tháng Năm', 6: 'Tháng Sáu',
+    7: 'Tháng Bảy', 8: 'Tháng Tám', 9: 'Tháng Chín', 10: 'Tháng Mười', 11: 'Tháng Mười Một', 12: 'Tháng Mười Hai'
   };
 
-  const escapeHTML = (value='') => String(value)
-    .replaceAll('&','&amp;')
-    .replaceAll('<','&lt;')
-    .replaceAll('>','&gt;')
-    .replaceAll('"','&quot;')
-    .replaceAll("'",'&#039;');
+  const escapeHTML = (value = '') => String(value)
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#039;');
 
   const escapeAttr = escapeHTML;
 
@@ -48,13 +48,31 @@
     return acc;
   }, {});
 
-  Object.values(byYear).forEach(items => items.sort((a,b) => a.sort.localeCompare(b.sort)));
+  Object.values(byYear).forEach(items => items.sort((a, b) => a.sort.localeCompare(b.sort)));
   Object.values(byYearMonth).forEach(months => {
-    Object.values(months).forEach(items => items.sort((a,b) => a.sort.localeCompare(b.sort)));
+    Object.values(months).forEach(items => items.sort((a, b) => a.sort.localeCompare(b.sort)));
   });
 
+  function enterFullscreen() {
+    const el = document.documentElement;
+
+    if (document.fullscreenElement || document.webkitFullscreenElement) {
+      return;
+    }
+
+    try {
+      if (el.requestFullscreen) {
+        el.requestFullscreen().catch(() => { });
+      } else if (el.webkitRequestFullscreen) {
+        el.webkitRequestFullscreen();
+      }
+    } catch (err) {
+      console.log("Fullscreen không được hỗ trợ:", err);
+    }
+  }
+
   function itemKey(item) {
-    return `${item.year}-${String(item.month).padStart(2,'0')}-${String(item.day).padStart(2,'0')}`;
+    return `${item.year}-${String(item.month).padStart(2, '0')}-${String(item.day).padStart(2, '0')}`;
   }
 
   function selectItems(year, month, section, sourceItems) {
@@ -82,28 +100,28 @@
   }
 
   function buildScenes() {
-    const scenes = [{ id:'intro', type:'intro', label:'một câu chuyện về em' }];
-    const years = Object.keys(config.years || {}).map(Number).sort((a,b) => a-b);
+    const scenes = [{ id: 'intro', type: 'intro', label: 'một câu chuyện về em' }];
+    const years = Object.keys(config.years || {}).map(Number).sort((a, b) => a - b);
 
     years.forEach(year => {
       const yearConfig = config.years[String(year)] || config.years[year] || {};
-      scenes.push({ id:`year-${year}`, type:'year', year, label:String(year), data:yearConfig });
+      scenes.push({ id: `year-${year}`, type: 'year', year, label: String(year), data: yearConfig });
 
       (yearConfig.moments || []).forEach((moment, index) => {
         scenes.push({
-          id:`${year}-prologue-${index}`,
-          type:'moment',
+          id: `${year}-prologue-${index}`,
+          type: 'moment',
           year,
-          month:null,
-          label:moment.date ? `${year} · ${moment.date}` : String(year),
+          month: null,
+          label: moment.date ? `${year} · ${moment.date}` : String(year),
           moment,
-          items:selectItems(year, null, moment),
-          monthConfig:null,
-          isFirstInMonth:false
+          items: selectItems(year, null, moment),
+          monthConfig: null,
+          isFirstInMonth: false
         });
       });
 
-      const months = Object.keys(yearConfig.months || {}).map(Number).sort((a,b) => a-b);
+      const months = Object.keys(yearConfig.months || {}).map(Number).sort((a, b) => a - b);
       months.forEach(month => {
         const monthConfig = yearConfig.months[String(month)] || yearConfig.months[month] || {};
         const monthItems = byYearMonth[year]?.[month] || [];
@@ -114,53 +132,53 @@
           const items = selectItems(year, month, moment, monthItems).filter(item => !used.has(item.filename));
           items.forEach(item => used.add(item.filename));
           scenes.push({
-            id:`${year}-${String(month).padStart(2,'0')}-${index}`,
-            type:'moment',
+            id: `${year}-${String(month).padStart(2, '0')}-${index}`,
+            type: 'moment',
             year,
             month,
-            label:`${monthNames[month]} ${year}`,
+            label: `${monthNames[month]} ${year}`,
             moment,
             items,
             monthConfig,
-            isFirstInMonth:index === 0
+            isFirstInMonth: index === 0
           });
         });
 
         const remaining = monthItems.filter(item => !used.has(item.filename));
         if (remaining.length) {
           scenes.push({
-            id:`${year}-${String(month).padStart(2,'0')}-extra`,
-            type:'moment',
+            id: `${year}-${String(month).padStart(2, '0')}-extra`,
+            type: 'moment',
             year,
             month,
-            label:`${monthNames[month]} ${year}`,
-            moment:{
-              date:'Những ngày khác',
-              title:'Vẫn còn vài khoảnh khắc anh muốn giữ lại',
-              paragraphs:[
+            label: `${monthNames[month]} ${year}`,
+            moment: {
+              date: 'Những ngày khác',
+              title: 'Vẫn còn vài khoảnh khắc anh muốn giữ lại',
+              paragraphs: [
                 'Không phải bức ảnh nào cũng cần một câu chuyện dài đi kèm.',
                 'Có những tấm chỉ cần nhìn lại là anh nhớ: à, lúc đó trong những ngày của mình vẫn có em.'
               ],
-              caption:'Một khoảnh khắc khác trong tháng mà anh vẫn muốn giữ lại.'
+              caption: 'Một khoảnh khắc khác trong tháng mà anh vẫn muốn giữ lại.'
             },
-            items:remaining,
+            items: remaining,
             monthConfig,
-            isFirstInMonth:sections.length === 0
+            isFirstInMonth: sections.length === 0
           });
         }
       });
     });
 
     if (config.reflection) {
-      scenes.push({ id:'reflection', type:'text', label:'và rồi cứ như vậy…', data:config.reflection });
+      scenes.push({ id: 'reflection', type: 'text', label: 'và rồi cứ như vậy…', data: config.reflection });
     }
 
     if (config.birthday?.preface) {
-      scenes.push({ id:'birthday-preface', type:'text', label:'hôm nay là sinh nhật em', data:config.birthday.preface, birthdayPreface:true });
+      scenes.push({ id: 'birthday-preface', type: 'text', label: 'hôm nay là sinh nhật em', data: config.birthday.preface, birthdayPreface: true });
     }
 
-    scenes.push({ id:'birthday', type:'birthday', label:'happy birthday' });
-    scenes.push({ id:'future', type:'future', label:'one more thing' });
+    scenes.push({ id: 'birthday', type: 'birthday', label: 'happy birthday' });
+    scenes.push({ id: 'future', type: 'future', label: 'one more thing' });
     return scenes;
   }
 
@@ -170,7 +188,7 @@
     if (scene.type === 'year') yearStartIndex[scene.year] = index;
   });
 
-  function navButtons({ prev=true, next=true, nextText='Đi tiếp' }={}) {
+  function navButtons({ prev = true, next = true, nextText = 'Đi tiếp' } = {}) {
     return `<nav class="scene-nav">
       ${prev ? '<button class="ghost" type="button" data-action="prev" aria-label="Quay lại">←</button>' : ''}
       ${next ? `<button class="primary" type="button" data-action="next">${escapeHTML(nextText)}</button>` : ''}
@@ -195,11 +213,11 @@
       <p class="eyebrow">${escapeHTML(y.eyebrow)}</p>
       <h2>${escapeHTML(y.title)}</h2>
       <div class="story-lines">${(y.intro || []).map(text => `<p>${escapeHTML(text)}</p>`).join('')}</div>
-      ${navButtons({ nextText:'Đi vào những ngày của năm này' })}
+      ${navButtons({ nextText: 'Đi vào những ngày của năm này' })}
     </div></div>`;
   }
 
-  function mediaCard(item, index, total, caption='') {
+  function mediaCard(item, index, total, caption = '') {
     const src = escapeAttr(item.src);
     const date = item.date || '';
     const inner = item.type === 'video'
@@ -215,7 +233,7 @@
       <span class="media-frame">${inner}</span>
       <span class="media-meta">
         <span class="media-date">${escapeHTML(date)}</span>
-        <span class="media-index">${String(index+1).padStart(2,'0')} / ${String(total).padStart(2,'0')}</span>
+        <span class="media-index">${String(index + 1).padStart(2, '0')} / ${String(total).padStart(2, '0')}</span>
       </span>
     </button>`;
   }
@@ -240,14 +258,14 @@
 
     return `<div class="scene-shell moment-scene" data-year="${scene.year}"${month ? ` data-month="${month}"` : ''}><div class="scene-inner">
       <div class="moment-head">
-        <span class="year-badge">${scene.year}${month ? ` · ${String(month).padStart(2,'0')}` : ''}</span>
+        <span class="year-badge">${scene.year}${month ? ` · ${String(month).padStart(2, '0')}` : ''}</span>
         <p class="eyebrow moment-context">${escapeHTML(context)}</p>
         ${moment.date ? `<div class="moment-date">${escapeHTML(moment.date)}</div>` : ''}
         <h2>${escapeHTML(moment.title)}</h2>
       </div>
       <div class="moment-copy">${(moment.paragraphs || []).map(text => `<p>${escapeHTML(text)}</p>`).join('')}</div>
       ${mediaBlock}
-      ${navButtons({ nextText:'Đi tiếp' })}
+      ${navButtons({ nextText: 'Đi tiếp' })}
     </div></div>`;
   }
 
@@ -257,7 +275,7 @@
       <p class="eyebrow">${escapeHTML(data.eyebrow)}</p>
       <h2>${escapeHTML(data.title)}</h2>
       <div class="story-panel">${(data.paragraphs || []).map(text => `<p>${escapeHTML(text)}</p>`).join('')}</div>
-      ${navButtons({ nextText:scene.birthdayPreface ? 'Và điều anh muốn chúc em…' : 'Đi tiếp' })}
+      ${navButtons({ nextText: scene.birthdayPreface ? 'Và điều anh muốn chúc em…' : 'Đi tiếp' })}
     </div></div>`;
   }
 
@@ -266,8 +284,8 @@
     return `<div class="scene-shell birthday-scene"><div class="scene-inner narrow">
       <p class="eyebrow">${escapeHTML(b.eyebrow)}</p>
       <h1>${escapeHTML(b.title)}</h1>
-      <div class="letter-card">${(b.paragraphs || []).map((paragraph,index) => `<p${index === b.paragraphs.length-1 ? ' class="signature"' : ''}>${escapeHTML(paragraph)}</p>`).join('')}</div>
-      ${navButtons({ nextText:'Anh còn một thứ nữa…' })}
+      <div class="letter-card">${(b.paragraphs || []).map((paragraph, index) => `<p${index === b.paragraphs.length - 1 ? ' class="signature"' : ''}>${escapeHTML(paragraph)}</p>`).join('')}</div>
+      ${navButtons({ nextText: 'Anh còn một thứ nữa…' })}
     </div></div>`;
   }
 
@@ -287,7 +305,7 @@
         <p class="future-ending">${escapeHTML(f.ending)}</p>
         <p class="year-hero">Happy Birthday, em yêu ♡</p>
       </div>
-      ${navButtons({ next:false })}
+      ${navButtons({ next: false })}
       <nav class="scene-nav"><button class="text-button" type="button" data-action="restart">Xem lại từ đầu</button></nav>
     </div></div>`;
   }
@@ -312,11 +330,11 @@
   }
 
   function buildYearNav() {
-    const years = Object.keys(config.years || {}).map(Number).sort((a,b) => a-b);
+    const years = Object.keys(config.years || {}).map(Number).sort((a, b) => a - b);
     yearNav.innerHTML = years.map(year => `<button class="year-pill" type="button" data-jump-year="${year}">${year}</button>`).join('');
   }
 
-  function renderCurrent({ animate=true }={}) {
+  function renderCurrent({ animate = true } = {}) {
     sceneRoot.innerHTML = render(scenes[current]);
     const shell = sceneRoot.firstElementChild;
     if (animate) shell?.classList.add('entering');
@@ -339,13 +357,14 @@
   function preloadNext() {
     const next = scenes[current + 1];
     if (!next?.items?.length) return;
-    next.items.slice(0,3).filter(item => item.type === 'image').forEach(item => {
+    next.items.slice(0, 3).filter(item => item.type === 'image').forEach(item => {
       const image = new Image();
       image.src = item.src;
     });
   }
 
   function start() {
+    enterFullscreen();
     if (!started) {
       started = true;
       chrome.classList.remove('hidden');
@@ -374,12 +393,12 @@
       : `<img src="${escapeAttr(src)}" alt="Kỷ niệm ${escapeAttr(date)}">`;
     lightboxCaption.innerHTML = `<b>${escapeHTML(date)}</b> · ${escapeHTML(caption)}`;
     lightbox.classList.add('open');
-    lightbox.setAttribute('aria-hidden','false');
+    lightbox.setAttribute('aria-hidden', 'false');
   }
 
   function closeLightbox() {
     lightbox.classList.remove('open');
-    lightbox.setAttribute('aria-hidden','true');
+    lightbox.setAttribute('aria-hidden', 'true');
     const video = lightboxMedia.querySelector('video');
     if (video) video.pause();
     setTimeout(() => {
@@ -387,8 +406,8 @@
     }, 300);
   }
 
-  function burst(amount=10) {
-    for (let i=0; i<amount; i++) {
+  function burst(amount = 10) {
+    for (let i = 0; i < amount; i++) {
       setTimeout(() => {
         const particle = document.createElement('span');
         particle.className = 'particle';
@@ -423,7 +442,7 @@
   });
 
   musicToggle.addEventListener('click', () => {
-    if (music.paused) music.play().then(() => musicToggle.classList.remove('muted')).catch(() => {});
+    if (music.paused) music.play().then(() => musicToggle.classList.remove('muted')).catch(() => { });
     else {
       music.pause();
       musicToggle.classList.add('muted');
@@ -443,7 +462,7 @@
   });
 
   buildYearNav();
-  renderCurrent({ animate:false });
+  renderCurrent({ animate: false });
 
   // Handy for review/debugging from DevTools without changing the experience.
   window.__BIRTHDAY_STORY__ = { scenes, goTo };

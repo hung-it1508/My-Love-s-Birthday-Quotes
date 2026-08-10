@@ -10,7 +10,7 @@ window.STORY_CONFIG = {
       "Anh muốn giữ lại ở đây những phiên bản của em mà anh đã từng nhìn thấy.",
       "Có những ngày rất đặc biệt. Cũng có những ngày chẳng có gì đặc biệt cả. Nhưng vì trong những ngày ấy có em, nên với anh, chúng đều đáng để nhớ."
     ],
-    "cta": "Bắt đầu câu chuyện"
+    "cta": "Mở món quà ♡"
   },
   "years": {
     "2023": {
