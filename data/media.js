@@ -3,14 +3,54 @@
 
 window.MEDIA_LIBRARY = [
   {
-    "src": "assets/media/2023/2023_01_14.jpg",
-    "filename": "2023_01_14.jpg",
+    "src": "assets/media/2023/2023_01_14(1).jpg",
+    "filename": "2023_01_14(1).jpg",
     "type": "image",
     "year": 2023,
     "month": 1,
     "day": 14,
     "date": "14/01/2023",
-    "sort": "2023-01-14-2023_01_14.jpg"
+    "sort": "2023-01-14-2023_01_14(1).jpg"
+  },
+  {
+    "src": "assets/media/2023/2023_01_14(2).jpg",
+    "filename": "2023_01_14(2).jpg",
+    "type": "image",
+    "year": 2023,
+    "month": 1,
+    "day": 14,
+    "date": "14/01/2023",
+    "sort": "2023-01-14-2023_01_14(2).jpg"
+  },
+  {
+    "src": "assets/media/2023/2023_01_14(3).jpg",
+    "filename": "2023_01_14(3).jpg",
+    "type": "image",
+    "year": 2023,
+    "month": 1,
+    "day": 14,
+    "date": "14/01/2023",
+    "sort": "2023-01-14-2023_01_14(3).jpg"
+  },
+  {
+    "src": "assets/media/2023/2023_01_14(4).jpg",
+    "filename": "2023_01_14(4).jpg",
+    "type": "image",
+    "year": 2023,
+    "month": 1,
+    "day": 14,
+    "date": "14/01/2023",
+    "sort": "2023-01-14-2023_01_14(4).jpg"
+  },
+  {
+    "src": "assets/media/2023/2023_01_14(5).jpg",
+    "filename": "2023_01_14(5).jpg",
+    "type": "image",
+    "year": 2023,
+    "month": 1,
+    "day": 14,
+    "date": "14/01/2023",
+    "sort": "2023-01-14-2023_01_14(5).jpg"
   },
   {
     "src": "assets/media/2024/2024_03_08(0).jpg",

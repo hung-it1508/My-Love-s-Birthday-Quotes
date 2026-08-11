@@ -5,8 +5,9 @@ window.STORY_CONFIG = {
     "eyebrow": "một món quà nhỏ dành riêng cho em",
     "title": "Một câu chuyện về em",
     "lines": [
+      "(Cảnh báo là hơi sến một chút nhá 🤭)",
       "Có lẽ đây không hẳn là câu chuyện về hai đứa mình.",
-      "Mà là câu chuyện về một cô gái đã từng xuất hiện trong cuộc sống của anh rất bình thường, rồi bằng một cách nào đó, từng chút một trở thành người mà anh muốn nhớ thật nhiều điều về.",
+      "Mà là câu chuyện về một cô gái đã từng xuất hiện trong cuộc sống của anh một cách rất bình thường, rồi bằng một cách nào đó, từng chút một trở thành người mà anh muốn nhớ thật nhiều điều về.",
       "Anh muốn giữ lại ở đây những phiên bản của em mà anh đã từng nhìn thấy.",
       "Có những ngày rất đặc biệt. Cũng có những ngày chẳng có gì đặc biệt cả. Nhưng vì trong những ngày ấy có em, nên với anh, chúng đều đáng để nhớ."
     ],
@@ -17,12 +18,12 @@ window.STORY_CONFIG = {
       "eyebrow": "trước khi có “chúng mình”",
       "title": "Hóa ra em đã ở đó từ lâu",
       "intro": [
-        "Có những người từng ở rất gần mình, nhưng phải đến đúng thời điểm, mình mới thực sự nhìn thấy họ."
+        "Có những người từng ở rất gần mình, nhưng phải đến đúng thời điểm, mình mới thực sự nhìn thấy họ nhỉ."
       ],
       "moments": [
         {
           "date": "14.01.2023",
-          "title": "Khi em vẫn chỉ là một cô gái cùng lớp",
+          "title": "Khi em vẫn chỉ là một người bạn cùng lớp với anh",
           "paragraphs": [
             "Buồn cười thật. Ngày ấy chúng mình học cùng nhau, biết nhau, xuất hiện trong cùng một lớp học, cùng những người bạn… nhưng lại chẳng thực sự biết nhiều về nhau.",
             "Tấm ảnh hôm chụp yearbook có lẽ lúc đó chỉ là một tấm ảnh rất bình thường. Anh cũng đâu thể biết rằng cô gái đứng trong bức ảnh ấy, hơn một năm sau, lại trở thành người xuất hiện nhiều nhất trong album của anh.",
@@ -38,7 +39,7 @@ window.STORY_CONFIG = {
     },
     "2024": {
       "eyebrow": "khi câu chuyện bắt đầu",
-      "title": "Anh bắt đầu biết em nhiều hơn",
+      "title": "Anh bắt đầu biết về em nhiều hơn",
       "intro": [
         "Từ một người từng học cùng lớp, em dần trở thành người anh mong chờ được nói chuyện mỗi ngày."
       ],
@@ -47,17 +48,15 @@ window.STORY_CONFIG = {
           "date": "",
           "title": "Những ngày chúng mình bắt đầu nói chuyện",
           "paragraphs": [
-            "Sau này, khi gặp lại nhau vào thời đại học, anh mới bắt đầu biết em nhiều hơn một chút. Từ những cuộc nói chuyện ban đầu… rồi thành những câu chuyện dài hơn. Rồi đến một lúc, việc nói chuyện với em trở thành một phần rất tự nhiên trong ngày.",
-            "Anh bắt đầu biết thêm những điều nhỏ nhặt về em: cách em kể chuyện, cách em phản ứng trước một điều gì đó, những lúc em vui, những lúc em hơi khó ở — và cả những điều mà trước đây, khi chỉ là hai người bạn học cùng lớp, anh chưa từng có cơ hội để biết.",
-            "Anh nghĩ đó là lúc em dần trở thành một người rất khác trong mắt anh. Không còn chỉ là “một người mình từng học cùng”, mà là người anh bắt đầu mong chờ tin nhắn mỗi ngày."
+            "Sau này, anh mới bắt đầu biết em nhiều hơn một chút. Từ những cuộc nói chuyện ban đầu… rồi thành những câu chuyện dài hơn. Rồi đến một lúc, việc nói chuyện với em trở thành một phần rất tự nhiên trong một ngày của anh.",
+            "Anh bắt đầu biết thêm những điều nhỏ nhặt về em: cách em kể chuyện, cách em phản ứng trước một điều gì đó, những lúc em vui, những lúc em buồn, những điều mà trước đây anh chưa từng có cơ hội để biết đến.",
+            "Anh nghĩ đó là lúc em dần trở thành một người rất khác trong mắt anh. Không còn chỉ là một người bạn cùng lớp nữa, mà là người anh bắt đầu mong chờ mỗi ngày."
           ]
         },
         {
           "date": "Hải Phòng",
           "title": "Một chuyến đi rất tình cờ",
           "paragraphs": [
-            "Có những chuyện xảy ra rất tự nhiên. Chuyến đi Hải Phòng cùng những người bạn cấp ba cũng vậy. Anh tình cờ là người chở em — một việc nghe chẳng có gì đặc biệt.",
-            "Nhưng đôi khi chính những điều chẳng được sắp đặt trước lại trở thành một phần trong câu chuyện mà sau này mình nhớ rất lâu.",
             "Có lẽ khi ấy anh vẫn chưa biết mọi thứ sẽ đi đến đâu. Chỉ biết rằng khoảng cách giữa hai đứa đã không còn giống trước nữa."
           ]
         },
@@ -65,11 +64,8 @@ window.STORY_CONFIG = {
           "date": "03.03.2024",
           "title": "Từ ngày đó, anh bắt đầu được nhìn thấy nhiều phiên bản của em hơn",
           "paragraphs": [
-            "Ngày 03/03/2024 là ngày chúng mình chính thức ở bên nhau. Nhưng nếu phải nói điều anh thích nhất về ngày đó, có lẽ không chỉ là việc “chúng mình trở thành người yêu”.",
-            "Mà là từ ngày ấy, anh bắt đầu được bước vào cuộc sống của em nhiều hơn một chút. Được nhìn thấy một em rất xinh trong những bức ảnh, một em vui vẻ khi đi chơi, một em mệt sau một ngày dài, một em đôi khi trẻ con, một em đôi lúc suy nghĩ rất nhiều.",
-            "Một em trong những ngày đặc biệt, và cả một em rất bình thường trong những ngày chẳng có chuyện gì xảy ra. Anh thích tất cả những phiên bản đó."
           ],
-          "caption": "Từ ngày này, câu chuyện không còn chỉ là “anh” và “em” nữa."
+          "caption": "Từ ngày này, câu chuyện không còn chỉ là anh và em nữa."
         }
       ],
       "months": {
@@ -78,38 +74,36 @@ window.STORY_CONFIG = {
           "subtitle": "Khi anh bắt đầu được ở cạnh em nhiều hơn",
           "sections": [
             {
-              "date": "08.03",
-              "title": "Những bức ảnh em gửi anh",
+              "date": "",
+              "title": "Ảnh của em xuất hiện nhiều hơn trong album của anh",
               "paragraphs": [
-                "Những bức ảnh em gửi ngày hôm đó có lẽ với em chỉ là vài tấm selfie bình thường. Nhưng với anh lúc ấy, chúng lại là kiểu ảnh mà anh có thể mở lên xem nhiều lần.",
-                "Có lẽ khi mới thích một người, người ta dễ thấy mọi thứ về người đó đều đáng yêu. Nhưng đến tận bây giờ anh vẫn nghĩ vậy.",
-                "Anh vẫn thích những bức ảnh em tự chụp. Không phải vì chúng lúc nào cũng hoàn hảo, mà vì trong mỗi tấm ảnh đều là một phiên bản rất riêng của em ở đúng thời điểm đó."
+                "Anh thích xem đi xem lại những bức ảnh đó nhiều lần, thích xem nó và cười mỗi đêm trước khi đi ngủ.",
+                "Có lẽ khi thích, khi yêu một người, người ta dễ thấy mọi thứ về người đó đều đáng yêu. Nhưng đến tận bây giờ anh vẫn nghĩ vậy."      
               ],
               "mediaDays": [
                 8
               ],
-              "caption": "Một trong những bức selfie em gửi anh trong những ngày đầu — rất bình thường với em, nhưng rất đáng nhớ với anh."
+              "caption": "Ảnh này quen hong hử, em không nhớ ảnh này lúc nào nữa chứ giè."
             },
             {
-              "date": "10.03",
+              "date": "",
               "title": "Một buổi tối ở nơi chúng mình từng học cùng nhau",
               "paragraphs": [
-                "Hôm đó em vừa từ quê lên. Còn anh vừa đi thể thao về. Rồi hai đứa lại gặp nhau ở chính ngôi trường cấp ba ngày trước — nơi hai đứa từng học cùng nhau nhưng gần như chẳng có câu chuyện gì với nhau.",
-                "Anh nghĩ đó là điều khiến buổi tối ấy đặc biệt. Cùng một nơi. Vẫn là hai con người ấy. Nhưng mối quan hệ đã hoàn toàn khác.",
-                "Nếu ngày trước có ai nói với anh rằng sau này anh sẽ cùng em quay lại đây trong một buổi tối như thế này… chắc anh cũng không tin."
+                "Chả hiểu sao hồi mới yêu nhau, anh lại hay rủ em sang chuyên Nguyễn Huệ thế cơ, mà em lại còn đồng ý nữa chứ.",
+                "Hồi đấy nhớ nhở, anh thích cảm giác được đi cùng em ở những nơi quen thuộc, nhưng lại có một cảm giác rất mới: hai đứa là người yêu.",
               ],
               "mediaDays": [
                 10
               ],
-              "caption": "Cùng một ngôi trường cũ, vẫn là hai người ấy — chỉ có mối quan hệ đã khác rồi."
+              "caption": "Vẫn nơi ấy, vẫn là hai người ấy nhưng chỉ có mối quan hệ đã khác rồi."
             },
             {
-              "date": "18–20.03",
+              "date": "",
               "title": "Những ngày anh có thêm thật nhiều ảnh của em",
               "paragraphs": [
                 "Có một điều anh nhận ra sau khi yêu em: album điện thoại của anh bắt đầu có rất nhiều em. Ảnh em gửi. Ảnh anh chụp. Ảnh đẹp. Ảnh ngẫu nhiên.",
-                "Có cả những tấm có lẽ em sẽ bảo: “Xóa đi.” Nhưng anh lại thấy rất đáng yêu.",
-                "Anh nghĩ điều khiến một người trở nên đặc biệt không phải lúc nào cũng là những khoảnh khắc họ đẹp nhất. Đôi khi lại chính là những biểu cảm rất bình thường mà chỉ những người ở gần mới có cơ hội nhìn thấy."
+                "Có cả những tấm em sẽ bảo: “Xóa đi.” Nhưng anh lại thấy rất đáng yêu.",
+                "Anh nghĩ điều khiến một người trở nên đặc biệt không phải lúc nào cũng là những khoảnh khắc họ đẹp nhất. Đôi khi lại chính là những biểu cảm rất bình thường mà chỉ những người ở gần mới có cơ hội nhìn thấy, em nhở?"
               ],
               "mediaDays": [
                 18,
@@ -119,23 +113,22 @@ window.STORY_CONFIG = {
               "caption": "Những phiên bản rất bình thường của em — và cũng là những phiên bản anh thích lưu lại nhất."
             },
             {
-              "date": "26.03",
-              "title": "Một buổi café rất bình thường",
-              "paragraphs": [
-                "26/03 chỉ là một buổi đi café. Không có sự kiện lớn. Không phải ngày kỷ niệm. Cũng chẳng có điều gì quá đặc biệt xảy ra. Nhưng anh vẫn nhớ nó.",
-                "Có lẽ bởi vì từ khoảng thời gian đó, những bức ảnh của anh bắt đầu có em xuất hiện một cách rất tự nhiên. Không cần một dịp đặc biệt để chụp ảnh cùng nhau.",
-                "Chỉ đơn giản là: “Hôm nay mình ở cạnh nhau.” Và như thế đã đủ để anh muốn lưu lại rồi."
+              "date": "",
+              "title": "Nhớ hồi còn Lummiere quá đi.",
+              "paragraphs": 
+              [ 
+                ""
               ],
               "mediaDays": [
                 26
               ],
-              "caption": "Một buổi café bình thường, nhưng là một trong những ngày anh muốn giữ lại vì hôm ấy có em."
+              "caption": "anh muốn giữ lại hết những ký ức có em."
             },
             {
               "date": "Cuối tháng 3",
-              "title": "Tháng đầu tiên khép lại như thế",
+              "title": "Tháng đầu tiên của hai đứa mình khép lại như thế đấy",
               "paragraphs": [
-                "Rồi tháng đầu tiên của hai đứa cũng đi qua bằng thêm vài bức ảnh rất bình thường.",
+                "Rồi tháng đầu tiên của hai đứa cũng đi qua bằng .",
                 "Có lẽ từ lúc này, việc lưu lại em trong điện thoại đã bắt đầu trở thành một thói quen của anh."
               ],
               "mediaDays": [
