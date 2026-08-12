@@ -177,3 +177,15 @@ html:-webkit-full-screen body {
     width: 100%;
     height: 100%;
 }
+/* Backward navigation gets its own direction so the experience feels spatial. */
+.scene-shell.entering-back { animation: sceneInBack .72s var(--ease) both; }
+.scene-shell.leaving-back { animation: sceneOutBack .32s ease both; }
+
+@keyframes sceneInBack {
+  from { opacity: 0; transform: translateX(-4vw) scale(1.018); filter: blur(8px); }
+  to { opacity: 1; transform: none; filter: none; }
+}
+
+@keyframes sceneOutBack {
+  to { opacity: 0; transform: translateX(3vw) scale(.985); filter: blur(6px); }
+}

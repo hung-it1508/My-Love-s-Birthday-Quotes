@@ -332,3 +332,166 @@
     scroll-behavior: auto !important;
   }
 }
+/* =========================================
+   CINEMATIC FLOW RESPONSIVE TUNING
+   ========================================= */
+
+@media (min-width: 761px) and (max-width: 1366px) {
+  .opening-frames {
+    margin-top: 8px;
+    gap: 9px;
+    padding-block: 5px 8px;
+  }
+
+  .opening-frames .media-card {
+    flex-basis: clamp(125px, 13.5vw, 170px);
+  }
+
+  .opening-copy {
+    margin-top: 4px;
+  }
+
+  .opening-copy p,
+  .chapter-lead,
+  .interlude-lead,
+  .date-reveal-lead,
+  .callback-lead {
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  .chapter-number {
+    font-size: clamp(68px, 9vw, 105px);
+    margin-bottom: -14px;
+  }
+
+  .chapter-scene h2,
+  .interlude-scene h2 {
+    font-size: clamp(36px, 4.3vw, 54px);
+  }
+
+  .date-reveal-title {
+    font-size: clamp(52px, 7.5vw, 88px);
+  }
+
+  .rewind-reel {
+    height: 108px;
+    margin-top: 11px;
+  }
+
+  .rewind-reel span {
+    font-size: clamp(58px, 8vw, 86px);
+  }
+}
+
+@media (min-width: 1000px) and (max-height: 800px) {
+  .opening-scene h2 {
+    font-size: clamp(34px, 4vw, 48px);
+  }
+
+  .opening-frames .media-card {
+    flex-basis: clamp(112px, 12vw, 150px);
+  }
+
+  .chapter-number {
+    font-size: 72px;
+  }
+
+  .chapter-scene h2,
+  .interlude-scene h2 {
+    font-size: clamp(34px, 4vw, 48px);
+  }
+
+  .date-reveal-title {
+    font-size: clamp(48px, 7vw, 78px);
+  }
+
+  .rewind-reel {
+    height: 92px;
+  }
+}
+
+@media (max-width: 760px) {
+  .opening-frames {
+    justify-content: flex-start;
+    width: 100vw;
+    margin-inline: calc(50% - 50vw);
+    padding-inline: 14vw;
+    scroll-snap-type: x mandatory;
+  }
+
+  .opening-frames .media-card {
+    flex-basis: 63vw;
+    scroll-snap-align: center;
+  }
+
+  .opening-frames .media-card:nth-child(n) {
+    transform: none;
+  }
+
+  .chapter-number {
+    font-size: 82px;
+    margin-bottom: -13px;
+  }
+
+  .chapter-scene h2,
+  .interlude-scene h2 {
+    font-size: clamp(38px, 10vw, 54px);
+  }
+
+  .chapter-lead,
+  .interlude-lead,
+  .date-reveal-lead,
+  .callback-lead {
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  .date-reveal-title {
+    font-size: clamp(44px, 13vw, 68px);
+    letter-spacing: .04em;
+  }
+
+  .rewind-reel {
+    width: 86vw;
+    height: 108px;
+  }
+
+  .rewind-reel span {
+    font-size: clamp(58px, 18vw, 82px);
+  }
+
+  .chapter-pill {
+    min-width: 27px;
+    padding: 6px 7px;
+    font-size: 10px;
+  }
+
+  .year-nav {
+    gap: 3px;
+    padding: 4px;
+  }
+
+  .cinema-stamp {
+    font-size: 8px;
+  }
+}
+
+@media (max-width: 430px) {
+  .chapter-pill {
+    min-width: 25px;
+    padding-inline: 6px;
+  }
+
+  .opening-frames .media-card {
+    flex-basis: 70vw;
+  }
+
+  .callback-line {
+    gap: 7px;
+  }
+
+  .callback-line b {
+    font-size: 9px;
+  }
+}

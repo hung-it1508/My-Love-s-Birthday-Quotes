@@ -5,18 +5,15 @@ window.STORY_CONFIG = {
     "eyebrow": "một món quà nhỏ dành riêng cho em",
     "title": "Một câu chuyện về em",
     "lines": [
-      "(Cảnh báo là hơi sến một chút nhá 🤭)",
-      "Có lẽ đây không hẳn là câu chuyện về hai đứa mình.",
-      "Mà là câu chuyện về một cô gái đã từng xuất hiện trong cuộc sống của anh một cách rất bình thường, rồi bằng một cách nào đó, từng chút một trở thành người mà anh muốn nhớ thật nhiều điều về.",
-      "Anh muốn giữ lại ở đây những phiên bản của em mà anh đã từng nhìn thấy.",
-      "Có những ngày rất đặc biệt. Cũng có những ngày chẳng có gì đặc biệt cả. Nhưng vì trong những ngày ấy có em, nên với anh, chúng đều đáng để nhớ."
+      "(Cảnh báo là hơi sến một chút nha 🤭)",
+      "Có lẽ đây không phải là câu chuyện về hai đứa mình. Mà là câu chuyện về một cô gái đã từng xuất hiện trong cuộc sống của anh một cách rất bình thường, rồi bằng một cách nào đó, từng chút một trở thành người mà anh muốn nhớ thật nhiều điều về. Anh muốn giữ lại ở đây những phiên bản của em mà anh đã từng nhìn thấy. Có những ngày rất đặc biệt, cũng có những thường nhật của em. Nhưng vì trong những ngày bình thường ấy có em, nên với anh, chúng đều đáng để nhớ."
     ],
     "cta": "Mở món quà ♡"
   },
   "years": {
     "2023": {
       "eyebrow": "trước khi có “chúng mình”",
-      "title": "Hóa ra em đã ở đó từ lâu",
+      "title": "Hóa ra minhmoc của anh đã ở đó từ lâu rồi",
       "intro": [
         "Có những người từng ở rất gần mình, nhưng phải đến đúng thời điểm, mình mới thực sự nhìn thấy họ nhỉ."
       ],
@@ -25,45 +22,44 @@ window.STORY_CONFIG = {
           "date": "14.01.2023",
           "title": "Khi em vẫn chỉ là một người bạn cùng lớp với anh",
           "paragraphs": [
-            "Buồn cười thật. Ngày ấy chúng mình học cùng nhau, biết nhau, xuất hiện trong cùng một lớp học, cùng những người bạn… nhưng lại chẳng thực sự biết nhiều về nhau.",
-            "Tấm ảnh hôm chụp yearbook có lẽ lúc đó chỉ là một tấm ảnh rất bình thường. Anh cũng đâu thể biết rằng cô gái đứng trong bức ảnh ấy, hơn một năm sau, lại trở thành người xuất hiện nhiều nhất trong album của anh.",
-            "Nhìn lại bây giờ, anh vẫn thấy điều đó thật kỳ lạ. Có những người từng ở rất gần mình, nhưng phải đến đúng thời điểm, mình mới thực sự nhìn thấy họ."
+            "Buồn cười thật, hồi ấy bọn mình học cùng nhau, biết nhau, xuất hiện trong cùng một lớp học, nhưng lại chẳng thực sự biết nhiều về nhau. Tấm ảnh hôm chụp kỷ yếu có lẽ lúc đó chỉ là một tấm ảnh rất tình cờ thôi. Anh cũng đâu thể biết rằng cô gái đứng trong bức ảnh ấy, hơn một năm sau, lại trở thành người xuất hiện nhiều nhất trong album của anh. Nhìn lại bây giờ, anh vẫn thấy điều đó thật kỳ lạ."
           ],
           "mediaDays": [
             14
           ],
-          "caption": "Bức ảnh đầu tiên của hai đứa — khi em vẫn chỉ là cô gái cùng lớp mà anh chưa biết sau này sẽ quan trọng đến thế."
+          "caption": "Bức ảnh đầu tiên của hai đứa — khi em vẫn chỉ là một bạn cùng lớp với anh."
         }
       ],
       "months": {}
     },
     "2024": {
       "eyebrow": "khi câu chuyện bắt đầu",
-      "title": "Anh bắt đầu biết về em nhiều hơn",
+      "title": "Anh bắt đầu biết nhiều thứ về em nhiều hơn",
       "intro": [
-        "Từ một người từng học cùng lớp, em dần trở thành người anh mong chờ được nói chuyện mỗi ngày."
+        "Từ một người xa lạ với anh, em dần trở thành người anh mong chờ được nói chuyện mỗi ngày."
       ],
       "moments": [
         {
           "date": "",
           "title": "Những ngày chúng mình bắt đầu nói chuyện",
           "paragraphs": [
-            "Sau này, anh mới bắt đầu biết em nhiều hơn một chút. Từ những cuộc nói chuyện ban đầu… rồi thành những câu chuyện dài hơn. Rồi đến một lúc, việc nói chuyện với em trở thành một phần rất tự nhiên trong một ngày của anh.",
-            "Anh bắt đầu biết thêm những điều nhỏ nhặt về em: cách em kể chuyện, cách em phản ứng trước một điều gì đó, những lúc em vui, những lúc em buồn, những điều mà trước đây anh chưa từng có cơ hội để biết đến.",
-            "Anh nghĩ đó là lúc em dần trở thành một người rất khác trong mắt anh. Không còn chỉ là một người bạn cùng lớp nữa, mà là người anh bắt đầu mong chờ mỗi ngày."
+            "Sau này, anh mới bắt đầu biết em nhiều hơn một chút. Từ những cuộc nói chuyện ban đầu… rồi thành những câu chuyện dài hơn. Rồi đến một lúc, việc nói chuyện với em trở thành một phần rất tự nhiên trong một ngày của anh. Anh bắt đầu biết thêm những điều nhỏ nhặt về em, biết về tính cách, sở thích của em, biết về những niềm vui nhỏ trong cuộc sống của em - những điều mà trước đây anh chưa từng có cơ hội để biết đến. Anh nghĩ đó là lúc em dần trở thành một người rất khác trong mắt anh. Không còn chỉ là một người bạn nữa, mà là người anh bắt đầu mong chờ mỗi ngày."
           ]
         },
         {
           "date": "Hải Phòng",
-          "title": "Một chuyến đi rất tình cờ",
+          "title": "Một chuyến đi",
           "paragraphs": [
-            "Có lẽ khi ấy anh vẫn chưa biết mọi thứ sẽ đi đến đâu. Chỉ biết rằng khoảng cách giữa hai đứa đã không còn giống trước nữa."
+            "Hồi ấy, thực ra anh đã thích em rồi, em rất đặc biệt luôn, anh cảm thấy thật lạ tại sao em quan tâm anh đến thế. Nhưng mà hồi đấy cũng phải cảm ơn thằng Huy đẩy em cho anh chở, mà anh có cơ hội được gần em hơn một chút. Tiếc thật hồi đấy anh không lưu lại những kỷ niệm ý, hình như chỉ có trong máy của em thôi đấy. Em liệu mà giao ra cho anh ngay đi nhé.",
+            "Không sao, anh vẫn nhớ lắm, mình lại đi tiếp nhé."
           ]
         },
         {
           "date": "03.03.2024",
           "title": "Từ ngày đó, anh bắt đầu được nhìn thấy nhiều phiên bản của em hơn",
           "paragraphs": [
+            "Anh cảm thấy mình là người may mắn nhất trên đời, khi được người mình thích tỏ tình ạ. Em đừng ngại đấy nhá, xem tiếp đấy nhá không được tắt đi đâu.",
+            "Cảm giác lúc ấy lạ thật, anh không biết phải diễn tả sao nữa. Anh cảm thấy khoảng khắc ấy vừa mừng vừa lo cơ, mừng vì biết em cũng có cảm tình với em; nhưng mà cũng lo vì đây là lần đầu 'yêu' của anh, lần đầu anh bước vào một mối quan hệ mà anh không biết phải làm sao lun á."
           ],
           "caption": "Từ ngày này, câu chuyện không còn chỉ là anh và em nữa."
         }
@@ -77,8 +73,7 @@ window.STORY_CONFIG = {
               "date": "",
               "title": "Ảnh của em xuất hiện nhiều hơn trong album của anh",
               "paragraphs": [
-                "Anh thích xem đi xem lại những bức ảnh đó nhiều lần, thích xem nó và cười mỗi đêm trước khi đi ngủ.",
-                "Có lẽ khi thích, khi yêu một người, người ta dễ thấy mọi thứ về người đó đều đáng yêu. Nhưng đến tận bây giờ anh vẫn nghĩ vậy."      
+                "Anh thích xem đi xem lại những bức ảnh đó nhiều lần, thích xem nó và cười mỗi đêm trước khi đi ngủ. Có lẽ khi thích, khi yêu một người, người ta dễ thấy mọi thứ về người đó đều đáng yêu. Nhưng mà đến tận bây giờ nhé, em vẫn thật sự rất đáng yêu, nhiều khi anh nghĩ đến em mà anh lại bật cười vì cái sự đáng yêu đấy cơ."
               ],
               "mediaDays": [
                 8
@@ -87,42 +82,39 @@ window.STORY_CONFIG = {
             },
             {
               "date": "",
-              "title": "Một buổi tối ở nơi chúng mình từng học cùng nhau",
+              "title": "Lần đầu tiên anh được ở cùng em gần như thế, được ôm em nhìn em cười vui như thế đấy",
               "paragraphs": [
-                "Chả hiểu sao hồi mới yêu nhau, anh lại hay rủ em sang chuyên Nguyễn Huệ thế cơ, mà em lại còn đồng ý nữa chứ.",
-                "Hồi đấy nhớ nhở, anh thích cảm giác được đi cùng em ở những nơi quen thuộc, nhưng lại có một cảm giác rất mới: hai đứa là người yêu.",
+                "Chả hiểu sao hồi mới yêu nhau, anh lại hay rủ em sang chuyên Nguyễn Huệ thế cơ, mà em lại còn đồng ý nữa chứ. Hồi ấy, anh nhớ nhất một điều là em siêu thích màu vàng, thế nên cái mũ kia xuất hiện đó. Em nhớ xem lại tủ nhé xem còn cái mũ đấy không, đọc xong là đội mũ selfie gửi ngay cho anh một tấm đấy nhá",
               ],
               "mediaDays": [
                 10
               ],
-              "caption": "Vẫn nơi ấy, vẫn là hai người ấy nhưng chỉ có mối quan hệ đã khác rồi."
+              "caption": "Em đáng yêu quá đi mất thôi."
             },
             {
               "date": "",
-              "title": "Những ngày anh có thêm thật nhiều ảnh của em",
+              "title": "Càng ngày album ảnh của anh có thêm thật nhiều sự xuất hiện của em",
               "paragraphs": [
-                "Có một điều anh nhận ra sau khi yêu em: album điện thoại của anh bắt đầu có rất nhiều em. Ảnh em gửi. Ảnh anh chụp. Ảnh đẹp. Ảnh ngẫu nhiên.",
-                "Có cả những tấm em sẽ bảo: “Xóa đi.” Nhưng anh lại thấy rất đáng yêu.",
-                "Anh nghĩ điều khiến một người trở nên đặc biệt không phải lúc nào cũng là những khoảnh khắc họ đẹp nhất. Đôi khi lại chính là những biểu cảm rất bình thường mà chỉ những người ở gần mới có cơ hội nhìn thấy, em nhở?"
+                "Dạo ấy, mỗi khi em ngẫu hứng khoe vài tấm ảnh, anh đều giữ lại tất cả, cứ ngắm mãi thôi. Anh thích ngắm em cười, thích ngắm em vui vẻ, anh tò mò về cuộc sống của em. Anh yêu lắm những giây phút ấy, yêu cái vẻ mộc mạc, đời thường của em. "
               ],
               "mediaDays": [
                 18,
                 19,
                 20
               ],
-              "caption": "Những phiên bản rất bình thường của em — và cũng là những phiên bản anh thích lưu lại nhất."
+              "caption": "Những phiên bản rất đời thường của em mà anh rất là yêu."
             },
             {
               "date": "",
               "title": "Nhớ hồi còn Lummiere quá đi.",
-              "paragraphs": 
-              [ 
-                ""
-              ],
+              "paragraphs":
+                [
+                  "Quán cafe này giấu bao nhiêu kỷ niệm của hai đứa mình. Nơi lần đầu tiên chúng mình được ngồi gần nhau, rồi lại trở thành chốn quen thuộc đồng hành qua bao mùa thi. Từng hình bóng của em ở nơi ấy anh đều nhớ rất rõ, không sót một khoảnh khắc nào. Cảnh cũ làm anh hoài niệm quá. Tiếc thật, góc nhỏ quen thuộc ấy giờ lại đóng cửa mất rồi."
+                ],
               "mediaDays": [
                 26
               ],
-              "caption": "anh muốn giữ lại hết những ký ức có em."
+              "caption": "Anh muốn giữ lại hết những ký ức có em."
             },
             {
               "date": "Cuối tháng 3",
@@ -644,19 +636,18 @@ window.STORY_CONFIG = {
               "date": "31.01",
               "title": "Thêm một năm mới, thêm một đoạn mới",
               "paragraphs": [
-                "Đầu năm 2026, hai đứa lại bước vào một năm mới cùng nhau.",
-                "Anh thích cảm giác timeline này cứ dài thêm một chút. Không cần mỗi năm phải hoàn toàn khác — chỉ cần người mình muốn có trong những ngày ấy vẫn còn ở đó."
+                "Hai đứa lại bước vào một năm mới cùng nhau. Anh thích cảm giác timeline này cứ dài thêm một chút. Không cần mỗi năm phải hoàn toàn khác — chỉ cần có em thôi."
               ],
               "mediaDays": [
                 31
               ],
-              "caption": "Một năm mới nữa, và câu chuyện vẫn đang được viết tiếp."
+              "caption": "Một năm mới nữa bọn mình ở cùng nhau."
             }
           ]
         },
         "2": {
           "title": "Tháng 2",
-          "subtitle": "Một điều bình yên đầu năm",
+          "subtitle": "First time to pagoda",
           "sections": [
             {
               "date": "21.02",
@@ -757,10 +748,10 @@ window.STORY_CONFIG = {
     "eyebrow": "và rồi cứ như vậy…",
     "title": "Anh ngày càng biết thêm nhiều điều về em",
     "paragraphs": [
-      "Từng tháng trôi qua. Album ngày càng có nhiều ảnh hơn. Nhưng điều thay đổi nhiều nhất có lẽ không phải số lượng ảnh, mà là việc anh ngày càng biết thêm nhiều điều về em.",
+      "Từng tháng trôi qua. Album của anh lại ngày càng nhiều bóng hình em. Nhưng điều thay đổi nhiều nhất có lẽ không phải số lương ảnh trong máy anh, mà là việc anh ngày càng biết thêm nhiều điều về em.",
       "Biết thêm một chút về những điều làm em vui, những điều khiến em buồn, những điều em quan tâm, những lúc em cần một người ở cạnh, và cả những lúc em chỉ muốn được yên tĩnh.",
-      "Anh cũng biết rằng mình vẫn còn rất nhiều điều chưa hiểu hết về em. Có lẽ sau này cũng vậy. Em vẫn sẽ thay đổi, sẽ có thêm những sở thích mới, những suy nghĩ mới, những mục tiêu mới, những phiên bản mới của chính mình.",
-      "Và anh hy vọng mình vẫn có thể ở đó để được nhìn thấy chúng."
+      "Anh biết rằng mình vẫn còn nhiều điều chưa hiểu hết về em. Có lẽ sau này cũng vậy. Em vẫn sẽ thay đổi, sẽ có thêm những điều mới, những suy nghĩ mới, những mục tiêu mới, những phiên bản mới của chính mình.",
+      "Nhưng anh hy vọng mình vẫn có thể ở đó để được nhìn thấy chúng."
     ]
   },
   "birthday": {
@@ -769,8 +760,8 @@ window.STORY_CONFIG = {
       "title": "Chiếc hộp nhỏ chứa những phiên bản của em",
       "paragraphs": [
         "Anh làm nơi này không phải chỉ để kể lại chúng mình đã đi đâu hay đã ở bên nhau bao lâu.",
-        "Anh muốn nó giống như một chiếc hộp nhỏ chứa những phiên bản của em mà anh đã may mắn được gặp: em của những ngày còn là bạn học, em của những ngày chúng mình bắt đầu nói chuyện, em của những ngày đầu yêu nhau, em trong những chuyến đi, em trong những tấm selfie gửi anh.",
-        "Em khi vui. Em khi mệt. Em khi rất xinh. Và cả em trong những ngày em nghĩ mình chẳng có gì đặc biệt.",
+        "Anh muốn nó giống như một chiếc hộp nhỏ chứa những phiên bản của em mà anh đã may mắn được gặp: em của những ngày mà mình còn là bạn, em của những ngày chúng mình bắt đầu, em của những ngày đầu yêu nhau, em trong những chuyến đi, em trong cuộc sống của anh.",
+        "Em khi vui. Em khi giận. Em khi rất đáng yêu. Và cả em trong những ngày 'mưa buồn' nữa nhỉ.",
         "Với anh, tất cả đều đáng để nhớ."
       ]
     },
@@ -779,7 +770,7 @@ window.STORY_CONFIG = {
     "paragraphs": [
       "Tuổi mới, anh không mong em phải trở thành một phiên bản hoàn hảo hơn của chính mình. Anh chỉ mong em có thêm thật nhiều ngày mà em cảm thấy vui.",
       "Được làm những điều em thích. Được gặp những người khiến em cảm thấy thoải mái. Có đủ dũng khí cho những điều em muốn thử. Và có đủ bình yên để không cần phải vội vàng với những điều chưa đến.",
-      "Anh mong em vẫn sẽ cười thật nhiều, vẫn sẽ chụp thật nhiều ảnh, vẫn sẽ kể cho anh nghe những câu chuyện linh tinh trong ngày.",
+      "Anh mong em vẫn sẽ cười thật nhiều, vẫn sẽ chụp thật nhiều ảnh, vẫn sẽ kể cho anh nghe những câu chuyện nhỏ trong cuộc sống của em.",
       "Và vẫn được là chính em — kể cả trong những ngày vui, những ngày mệt, những ngày tự tin hay cả những ngày em chẳng thích bản thân mình lắm.",
       "Còn anh… anh chỉ hy vọng mình vẫn sẽ được ở đâu đó trong những ngày sắp tới của em. Để vài năm nữa, khi nhìn lại, chúng mình lại có thêm thật nhiều khoảnh khắc để đặt vào nơi này.",
       "Chúc mừng sinh nhật em. Cảm ơn vì em đã xuất hiện. Và cảm ơn vì trong rất nhiều phiên bản của em, anh đã may mắn được biết một vài phiên bản thật đẹp. 🤍"
@@ -790,6 +781,95 @@ window.STORY_CONFIG = {
     "title": "Còn một phiên bản của em anh vẫn muốn được nhìn thấy…",
     "lead": "Không phải ở trong album cũ. Mà ở một ngày nào đó phía trước.",
     "punch": "Biết đâu một ngày, đây không còn chỉ là ảnh AI nữa. ♡",
-    "ending": "Còn bây giờ, cứ tiếp tục là em thôi nhé. Những trang còn lại, mình từ từ viết tiếp."
+    "ending": "Còn bây giờ, cứ tiếp tục là em thôi nhé. Những trang còn lại, mình từ từ viết tiếp nhé."
   }
+,
+  "cinema": {
+    "opening": {
+      "eyebrow": "ở hiện tại",
+      "title": "Không biết từ bao giờ…",
+      "paragraphs": [
+        "Dạo gần đây anh chợt thử nghĩ: không biết từ bao giờ điện thoại của anh lại có nhiều ảnh em như thế này.",
+        "Thế là anh thử tìm ngược lại."
+      ],
+      "cta": "Tìm ngược lại"
+    },
+    "rewind": {
+      "eyebrow": "rewind",
+      "title": "Anh thử tìm xem em bắt đầu xuất hiện từ bao giờ.",
+      "cta": "Tua ngược"
+    },
+    "firstDate": {
+      "eyebrow": "mọi thứ dừng lại ở đây",
+      "title": "14 · 01 · 2023",
+      "lead": "Hóa ra là từ đây."
+    },
+    "relationshipDate": {
+      "eyebrow": "rồi đến một ngày",
+      "title": "03 · 03 · 2024",
+      "lead": "Từ ngày này, câu chuyện không còn giống trước nữa."
+    },
+    "chapters": {
+      "beginning": {
+        "number": "I",
+        "eyebrow": "điểm bắt đầu",
+        "title": "Trước khi có ‘chúng mình’",
+        "lead": "Có những người từng ở rất gần mình, nhưng phải đến đúng thời điểm, mình mới thực sự nhìn thấy họ."
+      },
+      "closer": {
+        "number": "II",
+        "eyebrow": "trước khi gọi tên mối quan hệ",
+        "title": "Rồi mình bắt đầu tiến gần nhau hơn",
+        "lead": "Không có một khoảnh khắc duy nhất làm mọi thứ thay đổi. Chỉ là từng cuộc nói chuyện, từng lần gặp, từng chút một."
+      },
+      "album": {
+        "number": "III",
+        "eyebrow": "sau ngày 03.03",
+        "title": "Rồi em bắt đầu xuất hiện nhiều hơn",
+        "lead": "Một tấm ảnh thành vài tấm. Vài tấm thành cả một quãng thời gian."
+      },
+      "ordinary": {
+        "number": "IV",
+        "eyebrow": "điều anh nhận ra sau đó",
+        "title": "Anh từng nghĩ mình sẽ nhớ những ngày đặc biệt",
+        "lead": "Nhưng hóa ra những thứ ở lại lâu nhất lại thường là những ngày chẳng có gì quá đặc biệt."
+      },
+      "firsts": {
+        "number": "V",
+        "eyebrow": "những lần đầu tiên",
+        "title": "Khi mới yêu, mọi thứ đều có chữ ‘đầu tiên’",
+        "lead": "Sinh nhật đầu tiên. Giáng sinh đầu tiên. Tết đầu tiên. Một năm đầu tiên. Mình đã từng đếm rất nhiều thứ như thế."
+      },
+      "life": {
+        "number": "VI",
+        "eyebrow": "rồi đến một lúc",
+        "title": "Mình không còn đếm nữa",
+        "lead": "Không phải vì những ngày ấy ít quan trọng hơn. Chỉ là có em đã dần trở thành một phần rất tự nhiên trong cuộc sống của anh."
+      },
+      "present": {
+        "number": "VII",
+        "eyebrow": "trở lại nơi câu chuyện bắt đầu",
+        "title": "Và rồi anh lại quay về hiện tại",
+        "lead": "Chính những bức ảnh em đã nhìn thấy ở đầu câu chuyện. Chỉ là lần này, phía sau chúng đã có cả một hành trình."
+      }
+    },
+    "interludes": {
+      "withoutMe": {
+        "eyebrow": "có những ngày trong ảnh không có anh",
+        "title": "Nhưng anh vẫn muốn giữ lại",
+        "lead": "Vì anh không chỉ thích những khoảnh khắc có ‘chúng mình’. Anh còn thích được nhìn thấy những ngày chỉ có em."
+      },
+      "taxua": {
+        "eyebrow": "một khoảng lặng",
+        "title": "Có vài chuyện đẹp chắc phải cùng nhau chờ một chút mới thấy được…",
+        "lead": "Không phải điều gì đáng nhớ cũng đến đúng theo kế hoạch."
+      }
+    },
+    "callback": {
+      "eyebrow": "anh đã tìm được điểm bắt đầu",
+      "title": "Còn điểm cuối thì chắc chưa.",
+      "lead": "Album này không kết thúc ở đây. Nó chỉ đang dừng lại một chút để anh có thể tặng em xem."
+    }
+  }
+
 };

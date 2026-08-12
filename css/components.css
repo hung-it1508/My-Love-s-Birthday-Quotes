@@ -363,3 +363,13 @@
 .lightbox-caption b {
   color: #fff;
 }
+/* The center navigation now represents story chapters rather than years. */
+.chapter-pill {
+  min-width: 30px;
+  padding-inline: 9px;
+  font-weight: 600;
+}
+
+.chapter-pill.active {
+  transform: translateY(-1px);
+}

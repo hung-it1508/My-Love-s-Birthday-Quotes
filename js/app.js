@@ -1,11 +1,12 @@
 (() => {
   const media = window.MEDIA_LIBRARY || [];
   const config = window.STORY_CONFIG || {};
+  const cinema = config.cinema || {};
 
   const sceneRoot = document.getElementById('sceneRoot');
   const progressBar = document.getElementById('progressBar');
   const chapterLabel = document.getElementById('chapterLabel');
-  const yearNav = document.getElementById('yearNav');
+  const chapterNav = document.getElementById('yearNav');
   const chrome = document.getElementById('chrome');
   const music = document.getElementById('music');
   const musicToggle = document.getElementById('musicToggle');
@@ -18,11 +19,6 @@
   let current = 0;
   let transitioning = false;
   let started = false;
-
-  const monthNames = {
-    1: 'Tháng Một', 2: 'Tháng Hai', 3: 'Tháng Ba', 4: 'Tháng Tư', 5: 'Tháng Năm', 6: 'Tháng Sáu',
-    7: 'Tháng Bảy', 8: 'Tháng Tám', 9: 'Tháng Chín', 10: 'Tháng Mười', 11: 'Tháng Mười Một', 12: 'Tháng Mười Hai'
-  };
 
   const escapeHTML = (value = '') => String(value)
     .replaceAll('&', '&amp;')
@@ -55,19 +51,13 @@
 
   function enterFullscreen() {
     const el = document.documentElement;
-
-    if (document.fullscreenElement || document.webkitFullscreenElement) {
-      return;
-    }
+    if (document.fullscreenElement || document.webkitFullscreenElement) return;
 
     try {
-      if (el.requestFullscreen) {
-        el.requestFullscreen().catch(() => { });
-      } else if (el.webkitRequestFullscreen) {
-        el.webkitRequestFullscreen();
-      }
+      if (el.requestFullscreen) el.requestFullscreen().catch(() => {});
+      else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
     } catch (err) {
-      console.log("Fullscreen không được hỗ trợ:", err);
+      console.log('Fullscreen không được hỗ trợ:', err);
     }
   }
 
@@ -99,94 +89,153 @@
     return [];
   }
 
+  function getMoment(year, momentIndex) {
+    const yearConfig = config.years?.[String(year)] || {};
+    return yearConfig.moments?.[momentIndex] || null;
+  }
+
+  function getSection(year, month, sectionIndex) {
+    const yearConfig = config.years?.[String(year)] || {};
+    const monthConfig = yearConfig.months?.[String(month)] || {};
+    return {
+      moment: monthConfig.sections?.[sectionIndex] || null,
+      monthConfig
+    };
+  }
+
+  function momentScene({ year, month = null, index, source = 'month', chapter, tone = '', stamp = '', label = '' }) {
+    let moment = null;
+    let monthConfig = null;
+
+    if (source === 'prologue') {
+      moment = getMoment(year, index);
+    } else {
+      const result = getSection(year, month, index);
+      moment = result.moment;
+      monthConfig = result.monthConfig;
+    }
+
+    if (!moment) return null;
+
+    return {
+      id: source === 'prologue' ? `${year}-prologue-${index}` : `${year}-${String(month).padStart(2, '0')}-${index}`,
+      type: 'moment',
+      year,
+      month,
+      chapter,
+      tone,
+      stamp,
+      label: label || moment.title,
+      moment,
+      monthConfig,
+      items: selectItems(year, month, moment)
+    };
+  }
+
+  function chapterScene(key) {
+    const data = cinema.chapters?.[key] || {};
+    return {
+      id: `chapter-${key}`,
+      type: 'chapter',
+      chapter: key,
+      label: data.title || key,
+      data
+    };
+  }
+
   function buildScenes() {
-    const scenes = [{ id: 'intro', type: 'intro', label: 'một câu chuyện về em' }];
-    const years = Object.keys(config.years || {}).map(Number).sort((a, b) => a - b);
-
-    years.forEach(year => {
-      const yearConfig = config.years[String(year)] || config.years[year] || {};
-      scenes.push({ id: `year-${year}`, type: 'year', year, label: String(year), data: yearConfig });
-
-      (yearConfig.moments || []).forEach((moment, index) => {
-        scenes.push({
-          id: `${year}-prologue-${index}`,
-          type: 'moment',
-          year,
-          month: null,
-          label: moment.date ? `${year} · ${moment.date}` : String(year),
-          moment,
-          items: selectItems(year, null, moment),
-          monthConfig: null,
-          isFirstInMonth: false
-        });
-      });
-
-      const months = Object.keys(yearConfig.months || {}).map(Number).sort((a, b) => a - b);
-      months.forEach(month => {
-        const monthConfig = yearConfig.months[String(month)] || yearConfig.months[month] || {};
-        const monthItems = byYearMonth[year]?.[month] || [];
-        const used = new Set();
-        const sections = monthConfig.sections || [];
-
-        sections.forEach((moment, index) => {
-          const items = selectItems(year, month, moment, monthItems).filter(item => !used.has(item.filename));
-          items.forEach(item => used.add(item.filename));
-          scenes.push({
-            id: `${year}-${String(month).padStart(2, '0')}-${index}`,
-            type: 'moment',
-            year,
-            month,
-            label: `${monthNames[month]} ${year}`,
-            moment,
-            items,
-            monthConfig,
-            isFirstInMonth: index === 0
-          });
-        });
-
-        const remaining = monthItems.filter(item => !used.has(item.filename));
-        if (remaining.length) {
-          scenes.push({
-            id: `${year}-${String(month).padStart(2, '0')}-extra`,
-            type: 'moment',
-            year,
-            month,
-            label: `${monthNames[month]} ${year}`,
-            moment: {
-              date: 'Những ngày khác',
-              title: 'Vẫn còn vài khoảnh khắc anh muốn giữ lại',
-              paragraphs: [
-                'Không phải bức ảnh nào cũng cần một câu chuyện dài đi kèm.',
-                'Có những tấm chỉ cần nhìn lại là anh nhớ: à, lúc đó trong những ngày của mình vẫn có em.'
-              ],
-              caption: 'Một khoảnh khắc khác trong tháng mà anh vẫn muốn giữ lại.'
-            },
-            items: remaining,
-            monthConfig,
-            isFirstInMonth: sections.length === 0
-          });
-        }
-      });
+    const openingItems = selectItems(2026, null, {
+      mediaDates: ['2026-05-29', '2026-05-30', '2026-07-05']
     });
 
-    if (config.reflection) {
-      scenes.push({ id: 'reflection', type: 'text', label: 'và rồi cứ như vậy…', data: config.reflection });
-    }
+    const flow = [
+      { id: 'intro', type: 'intro', label: 'một câu chuyện về em' },
+      { id: 'opening', type: 'opening', chapter: 'opening', label: 'ở hiện tại', data: cinema.opening || {}, items: openingItems },
+      { id: 'rewind', type: 'rewind', chapter: 'opening', label: 'rewind', data: cinema.rewind || {} },
 
-    if (config.birthday?.preface) {
-      scenes.push({ id: 'birthday-preface', type: 'text', label: 'hôm nay là sinh nhật em', data: config.birthday.preface, birthdayPreface: true });
-    }
+      chapterScene('beginning'),
+      { id: 'first-date', type: 'date-reveal', chapter: 'beginning', label: '14.01.2023', data: cinema.firstDate || {} },
+      momentScene({ year: 2023, index: 0, source: 'prologue', chapter: 'beginning', tone: 'origin' }),
 
-    scenes.push({ id: 'birthday', type: 'birthday', label: 'happy birthday' });
-    scenes.push({ id: 'future', type: 'future', label: 'one more thing' });
-    return scenes;
+      chapterScene('closer'),
+      momentScene({ year: 2024, index: 0, source: 'prologue', chapter: 'closer' }),
+      momentScene({ year: 2024, index: 1, source: 'prologue', chapter: 'closer' }),
+      { id: 'relationship-date', type: 'date-reveal', chapter: 'closer', label: '03.03.2024', data: cinema.relationshipDate || {}, relationship: true },
+      momentScene({ year: 2024, index: 2, source: 'prologue', chapter: 'closer', tone: 'relationship', stamp: 'CHÚNG MÌNH' }),
+
+      chapterScene('album'),
+      momentScene({ year: 2024, month: 3, index: 0, chapter: 'album' }),
+      momentScene({ year: 2024, month: 3, index: 1, chapter: 'album' }),
+      momentScene({ year: 2024, month: 3, index: 2, chapter: 'album' }),
+      momentScene({ year: 2024, month: 3, index: 3, chapter: 'album' }),
+      momentScene({ year: 2024, month: 3, index: 4, chapter: 'album' }),
+      momentScene({ year: 2024, month: 4, index: 0, chapter: 'album' }),
+      momentScene({ year: 2024, month: 4, index: 1, chapter: 'album', tone: 'trip' }),
+
+      chapterScene('ordinary'),
+      momentScene({ year: 2024, month: 5, index: 0, chapter: 'ordinary', tone: 'thesis' }),
+      { id: 'without-me', type: 'interlude', chapter: 'ordinary', label: 'có những ngày trong ảnh không có anh', data: cinema.interludes?.withoutMe || {}, tone: 'quiet' },
+      momentScene({ year: 2024, month: 6, index: 0, chapter: 'ordinary', tone: 'quiet' }),
+      momentScene({ year: 2024, month: 6, index: 1, chapter: 'ordinary' }),
+      momentScene({ year: 2024, month: 7, index: 0, chapter: 'ordinary' }),
+
+      chapterScene('firsts'),
+      momentScene({ year: 2024, month: 8, index: 0, chapter: 'firsts' }),
+      momentScene({ year: 2024, month: 8, index: 1, chapter: 'firsts', stamp: 'FIRST BIRTHDAY' }),
+      momentScene({ year: 2024, month: 8, index: 2, chapter: 'firsts' }),
+      momentScene({ year: 2024, month: 9, index: 0, chapter: 'firsts' }),
+      momentScene({ year: 2024, month: 10, index: 0, chapter: 'firsts', tone: 'thesis' }),
+      momentScene({ year: 2024, month: 12, index: 0, chapter: 'firsts' }),
+      momentScene({ year: 2024, month: 12, index: 1, chapter: 'firsts', stamp: 'FIRST CHRISTMAS' }),
+      momentScene({ year: 2025, month: 1, index: 0, chapter: 'firsts', stamp: 'FIRST TẾT' }),
+      momentScene({ year: 2025, month: 2, index: 0, chapter: 'firsts' }),
+      momentScene({ year: 2025, month: 3, index: 0, chapter: 'firsts', stamp: 'ONE YEAR' }),
+
+      chapterScene('life'),
+      momentScene({ year: 2025, month: 3, index: 1, chapter: 'life', tone: 'thesis' }),
+      momentScene({ year: 2025, month: 4, index: 0, chapter: 'life' }),
+      momentScene({ year: 2025, month: 5, index: 0, chapter: 'life' }),
+      momentScene({ year: 2025, month: 6, index: 0, chapter: 'life' }),
+      momentScene({ year: 2025, month: 8, index: 0, chapter: 'life', stamp: 'BIRTHDAY · AGAIN' }),
+      momentScene({ year: 2025, month: 8, index: 1, chapter: 'life', tone: 'trip' }),
+      momentScene({ year: 2025, month: 9, index: 0, chapter: 'life' }),
+      momentScene({ year: 2025, month: 10, index: 0, chapter: 'life' }),
+      momentScene({ year: 2025, month: 11, index: 0, chapter: 'life' }),
+      momentScene({ year: 2025, month: 12, index: 0, chapter: 'life' }),
+      momentScene({ year: 2026, month: 1, index: 0, chapter: 'life' }),
+      momentScene({ year: 2026, month: 2, index: 0, chapter: 'life' }),
+      { id: 'taxua-interlude', type: 'interlude', chapter: 'life', label: 'một khoảng lặng', data: cinema.interludes?.taxua || {}, tone: 'pause' },
+      momentScene({ year: 2026, month: 3, index: 0, chapter: 'life', tone: 'pause' }),
+      momentScene({ year: 2026, month: 4, index: 0, chapter: 'life' }),
+
+      chapterScene('present'),
+      momentScene({ year: 2026, month: 5, index: 0, chapter: 'present', tone: 'callback' }),
+      momentScene({ year: 2026, month: 7, index: 0, chapter: 'present', tone: 'callback' }),
+
+      config.reflection ? { id: 'reflection', type: 'text', chapter: 'present', label: 'và rồi cứ như vậy…', data: config.reflection } : null,
+      config.birthday?.preface ? { id: 'birthday-preface', type: 'text', chapter: 'present', label: 'hôm nay là sinh nhật em', data: config.birthday.preface, birthdayPreface: true } : null,
+      { id: 'callback', type: 'callback', chapter: 'present', label: 'điểm bắt đầu', data: cinema.callback || {} },
+      { id: 'birthday', type: 'birthday', chapter: 'present', label: 'happy birthday' },
+      { id: 'future', type: 'future', chapter: 'present', label: 'one more thing' }
+    ];
+
+    return flow.filter(Boolean);
   }
 
   const scenes = buildScenes();
-  const yearStartIndex = {};
+  const chapterStarts = {};
+  const chapterOrder = [];
+
   scenes.forEach((scene, index) => {
-    if (scene.type === 'year') yearStartIndex[scene.year] = index;
+    if (scene.type === 'chapter' && scene.chapter) {
+      chapterStarts[scene.chapter] = index;
+      chapterOrder.push(scene.chapter);
+    }
   });
+
+  const chapterTitles = Object.fromEntries(
+    chapterOrder.map(key => [key, cinema.chapters?.[key]?.title || key])
+  );
 
   function navButtons({ prev = true, next = true, nextText = 'Đi tiếp' } = {}) {
     return `<nav class="scene-nav">
@@ -202,29 +251,18 @@
       <h1>${escapeHTML(x.title)}</h1>
       <div class="intro-lines">${(x.lines || []).map(text => `<p>${escapeHTML(text)}</p>`).join('')}</div>
       <button class="primary" type="button" data-action="start">${escapeHTML(x.cta || 'Bắt đầu')}</button>
-      <p class="tiny">Không cần vội. Cứ xem từng chút một thôi.</p>
+      <p class="tiny">Em xem từng chút một nha.</p>
     </div></div>`;
   }
 
-  function renderYear(scene) {
-    const y = scene.data || {};
-    return `<div class="scene-shell year-scene" data-year="${scene.year}"><div class="scene-inner narrow">
-      <div class="year-number" aria-hidden="true">${scene.year}</div>
-      <p class="eyebrow">${escapeHTML(y.eyebrow)}</p>
-      <h2>${escapeHTML(y.title)}</h2>
-      <div class="story-lines">${(y.intro || []).map(text => `<p>${escapeHTML(text)}</p>`).join('')}</div>
-      ${navButtons({ nextText: 'Đi vào những ngày của năm này' })}
-    </div></div>`;
-  }
-
-  function mediaCard(item, index, total, caption = '') {
+  function mediaCard(item, index, total, caption = '', variant = '') {
     const src = escapeAttr(item.src);
     const date = item.date || '';
     const inner = item.type === 'video'
       ? `<video src="${src}" muted playsinline preload="metadata"></video><span class="play-badge">▶</span>`
       : `<img src="${src}" alt="Kỷ niệm ${escapeAttr(date)}" loading="lazy" decoding="async">`;
 
-    return `<button class="media-card" type="button"
+    return `<button class="media-card${variant ? ` ${escapeAttr(variant)}` : ''}" type="button"
       data-media-src="${src}"
       data-media-type="${escapeAttr(item.type)}"
       data-media-date="${escapeAttr(date)}"
@@ -238,28 +276,85 @@
     </button>`;
   }
 
+  function renderOpening(scene) {
+    const x = scene.data || {};
+    const items = scene.items || [];
+    const mediaBlock = items.length
+      ? `<div class="opening-frames">${items.slice(0, 5).map((item, index) => mediaCard(item, index, Math.min(items.length, 5), 'Một trong những bức ảnh gần hiện tại nhất.', 'opening-card')).join('')}</div>`
+      : '';
+
+    return `<div class="scene-shell opening-scene"><div class="scene-inner">
+      <p class="eyebrow">${escapeHTML(x.eyebrow)}</p>
+      <h2>${escapeHTML(x.title)}</h2>
+      ${mediaBlock}
+      <div class="opening-copy">${(x.paragraphs || []).map(text => `<p>${escapeHTML(text)}</p>`).join('')}</div>
+      ${navButtons({ nextText: x.cta || 'Tìm ngược lại' })}
+    </div></div>`;
+  }
+
+  function renderRewind(scene) {
+    const x = scene.data || {};
+    return `<div class="scene-shell rewind-scene"><div class="scene-inner narrow">
+      <p class="eyebrow">${escapeHTML(x.eyebrow)}</p>
+      <h2>${escapeHTML(x.title)}</h2>
+      <div class="rewind-reel" aria-label="Tua ngược từ 2026 về 2023">
+        <span>2026</span><span>2025</span><span>2024</span><span>2023</span>
+      </div>
+      <nav class="scene-nav">
+        <button class="ghost" type="button" data-action="prev" aria-label="Quay lại">←</button>
+        <button class="primary" type="button" data-action="rewind">${escapeHTML(x.cta || 'Tua ngược')}</button>
+      </nav>
+    </div></div>`;
+  }
+
+  function renderChapter(scene) {
+    const x = scene.data || {};
+    return `<div class="scene-shell chapter-scene" data-chapter="${escapeAttr(scene.chapter || '')}"><div class="scene-inner narrow">
+      <div class="chapter-number" aria-hidden="true">${escapeHTML(x.number || '')}</div>
+      <p class="eyebrow">${escapeHTML(x.eyebrow)}</p>
+      <h2>${escapeHTML(x.title)}</h2>
+      ${x.lead ? `<p class="chapter-lead">${escapeHTML(x.lead)}</p>` : ''}
+      ${navButtons({ nextText: 'Vào chương này' })}
+    </div></div>`;
+  }
+
+  function renderDateReveal(scene) {
+    const x = scene.data || {};
+    return `<div class="scene-shell date-reveal-scene${scene.relationship ? ' relationship-date-scene' : ''}"><div class="scene-inner narrow">
+      <p class="eyebrow">${escapeHTML(x.eyebrow)}</p>
+      <div class="date-reveal-title">${escapeHTML(x.title)}</div>
+      <p class="date-reveal-lead">${escapeHTML(x.lead)}</p>
+      ${navButtons({ nextText: scene.relationship ? 'Đi qua ngày này' : 'Xem bức ảnh đầu tiên' })}
+    </div></div>`;
+  }
+
+  function renderInterlude(scene) {
+    const x = scene.data || {};
+    return `<div class="scene-shell interlude-scene${scene.tone ? ` tone-${escapeAttr(scene.tone)}` : ''}"><div class="scene-inner narrow">
+      <p class="eyebrow">${escapeHTML(x.eyebrow)}</p>
+      <h2>${escapeHTML(x.title)}</h2>
+      ${x.lead ? `<p class="interlude-lead">${escapeHTML(x.lead)}</p>` : ''}
+      ${navButtons({ nextText: 'Đi tiếp' })}
+    </div></div>`;
+  }
+
   function renderMoment(scene) {
     const moment = scene.moment || {};
-    const month = scene.month;
-    const monthConfig = scene.monthConfig || {};
     const items = scene.items || [];
     const caption = moment.caption || moment.title || '';
-    const context = month
-      ? `${monthConfig.title || monthNames[month]} · ${monthConfig.subtitle || ''}`
-      : (moment.eyebrow || `một mảnh của ${scene.year}`);
+    const chapterTitle = chapterTitles[scene.chapter] || '';
 
     const mediaBlock = items.length ? `
       <div class="moment-media">
-        <p class="moment-media-label">${items.length > 1 ? `${items.length} khoảnh khắc` : 'một khoảnh khắc'} anh muốn giữ lại</p>
         <div class="media-rail">${items.map((item, index) => mediaCard(item, index, items.length, caption)).join('')}</div>
         ${items.length > 1 ? `<div class="timeline-dots" aria-hidden="true">${items.map(() => '<span class="timeline-dot"></span>').join('')}</div>` : ''}
         <p class="swipe-hint">← vuốt để xem hết ảnh →</p>
       </div>` : '';
 
-    return `<div class="scene-shell moment-scene" data-year="${scene.year}"${month ? ` data-month="${month}"` : ''}><div class="scene-inner">
+    return `<div class="scene-shell moment-scene${scene.tone ? ` tone-${escapeAttr(scene.tone)}` : ''}" data-year="${scene.year}"${scene.month ? ` data-month="${scene.month}"` : ''}><div class="scene-inner">
       <div class="moment-head">
-        <span class="year-badge">${scene.year}${month ? ` · ${String(month).padStart(2, '0')}` : ''}</span>
-        <p class="eyebrow moment-context">${escapeHTML(context)}</p>
+        <p class="eyebrow moment-context">${escapeHTML(chapterTitle)}</p>
+        ${scene.stamp ? `<div class="cinema-stamp">${escapeHTML(scene.stamp)}</div>` : ''}
         ${moment.date ? `<div class="moment-date">${escapeHTML(moment.date)}</div>` : ''}
         <h2>${escapeHTML(moment.title)}</h2>
       </div>
@@ -275,7 +370,18 @@
       <p class="eyebrow">${escapeHTML(data.eyebrow)}</p>
       <h2>${escapeHTML(data.title)}</h2>
       <div class="story-panel">${(data.paragraphs || []).map(text => `<p>${escapeHTML(text)}</p>`).join('')}</div>
-      ${navButtons({ nextText: scene.birthdayPreface ? 'Và điều anh muốn chúc em…' : 'Đi tiếp' })}
+      ${navButtons({ nextText: scene.birthdayPreface ? 'Còn một điều nữa…' : 'Đi tiếp' })}
+    </div></div>`;
+  }
+
+  function renderCallback(scene) {
+    const x = scene.data || {};
+    return `<div class="scene-shell callback-scene"><div class="scene-inner narrow">
+      <p class="eyebrow">${escapeHTML(x.eyebrow)}</p>
+      <h2>${escapeHTML(x.title)}</h2>
+      <p class="callback-lead">${escapeHTML(x.lead)}</p>
+      <div class="callback-line" aria-hidden="true"><span></span><b>14.01.2023</b><span></span><b>?</b></div>
+      ${navButtons({ nextText: 'Đến sinh nhật em' })}
     </div></div>`;
   }
 
@@ -312,32 +418,55 @@
 
   function render(scene) {
     if (scene.type === 'intro') return renderIntro();
-    if (scene.type === 'year') return renderYear(scene);
+    if (scene.type === 'opening') return renderOpening(scene);
+    if (scene.type === 'rewind') return renderRewind(scene);
+    if (scene.type === 'chapter') return renderChapter(scene);
+    if (scene.type === 'date-reveal') return renderDateReveal(scene);
+    if (scene.type === 'interlude') return renderInterlude(scene);
     if (scene.type === 'moment') return renderMoment(scene);
     if (scene.type === 'text') return renderTextScene(scene);
+    if (scene.type === 'callback') return renderCallback(scene);
     if (scene.type === 'birthday') return renderBirthday();
     if (scene.type === 'future') return renderFuture();
     return '';
   }
 
+  function activeChapterForScene(index) {
+    const scene = scenes[index];
+    if (scene.chapter && scene.chapter !== 'opening') return scene.chapter;
+
+    let active = null;
+    for (const key of chapterOrder) {
+      if (chapterStarts[key] <= index) active = key;
+    }
+    return active;
+  }
+
   function updateChrome() {
     const scene = scenes[current];
+    chrome.classList.toggle('hidden', current === 0);
     progressBar.style.width = `${((current + 1) / scenes.length) * 100}%`;
     chapterLabel.textContent = scene.label || '';
-    document.querySelectorAll('.year-pill').forEach(button => {
-      button.classList.toggle('active', Number(button.dataset.jumpYear) === scene.year);
+    const active = activeChapterForScene(current);
+
+    document.querySelectorAll('[data-jump-chapter]').forEach(button => {
+      button.classList.toggle('active', button.dataset.jumpChapter === active);
     });
   }
 
-  function buildYearNav() {
-    const years = Object.keys(config.years || {}).map(Number).sort((a, b) => a - b);
-    yearNav.innerHTML = years.map(year => `<button class="year-pill" type="button" data-jump-year="${year}">${year}</button>`).join('');
+  function buildChapterNav() {
+    chapterNav.setAttribute('aria-label', 'Chọn chương');
+    chapterNav.innerHTML = chapterOrder.map(key => {
+      const data = cinema.chapters?.[key] || {};
+      const title = data.title || key;
+      return `<button class="year-pill chapter-pill" type="button" data-jump-chapter="${escapeAttr(key)}" aria-label="${escapeAttr(title)}">${escapeHTML(data.number || '·')}</button>`;
+    }).join('');
   }
 
-  function renderCurrent({ animate = true } = {}) {
+  function renderCurrent({ animate = true, backwards = false } = {}) {
     sceneRoot.innerHTML = render(scenes[current]);
     const shell = sceneRoot.firstElementChild;
-    if (animate) shell?.classList.add('entering');
+    if (animate) shell?.classList.add(backwards ? 'entering-back' : 'entering');
     updateChrome();
     preloadNext();
   }
@@ -345,11 +474,13 @@
   function goTo(index) {
     if (transitioning || index < 0 || index >= scenes.length || index === current) return;
     transitioning = true;
+    const backwards = index < current;
     const shell = sceneRoot.firstElementChild;
-    shell?.classList.add('leaving');
+    shell?.classList.add(backwards ? 'leaving-back' : 'leaving');
+
     setTimeout(() => {
       current = index;
-      renderCurrent();
+      renderCurrent({ animate: true, backwards });
       transitioning = false;
     }, 300);
   }
@@ -357,7 +488,7 @@
   function preloadNext() {
     const next = scenes[current + 1];
     if (!next?.items?.length) return;
-    next.items.slice(0, 3).filter(item => item.type === 'image').forEach(item => {
+    next.items.slice(0, 4).filter(item => item.type === 'image').forEach(item => {
       const image = new Image();
       image.src = item.src;
     });
@@ -378,8 +509,20 @@
   function restart() {
     closeLightbox();
     current = 0;
+    started = false;
     chrome.classList.add('hidden');
-    renderCurrent();
+    renderCurrent({ animate: false });
+  }
+
+  function playRewind(button) {
+    if (transitioning || button.disabled) return;
+    button.disabled = true;
+    const shell = sceneRoot.querySelector('.rewind-scene');
+    shell?.classList.add('is-rewinding');
+
+    setTimeout(() => {
+      goTo(current + 1);
+    }, 1650);
   }
 
   function openLightbox(button) {
@@ -423,26 +566,29 @@
   }
 
   document.addEventListener('click', event => {
-    const action = event.target.closest('[data-action]')?.dataset.action;
+    const actionTarget = event.target.closest('[data-action]');
+    const action = actionTarget?.dataset.action;
+
     if (action === 'start') start();
     if (action === 'next') goTo(current + 1);
     if (action === 'prev') goTo(current - 1);
     if (action === 'restart') restart();
+    if (action === 'rewind') playRewind(actionTarget);
     if (action === 'reveal-future') {
       document.getElementById('futureReveal')?.classList.add('show');
-      event.target.style.display = 'none';
+      actionTarget.style.display = 'none';
       burst(32);
     }
 
     const mediaButton = event.target.closest('.media-card');
     if (mediaButton) openLightbox(mediaButton);
 
-    const yearButton = event.target.closest('[data-jump-year]');
-    if (yearButton) goTo(yearStartIndex[Number(yearButton.dataset.jumpYear)]);
+    const chapterButton = event.target.closest('[data-jump-chapter]');
+    if (chapterButton) goTo(chapterStarts[chapterButton.dataset.jumpChapter]);
   });
 
   musicToggle.addEventListener('click', () => {
-    if (music.paused) music.play().then(() => musicToggle.classList.remove('muted')).catch(() => { });
+    if (music.paused) music.play().then(() => musicToggle.classList.remove('muted')).catch(() => {});
     else {
       music.pause();
       musicToggle.classList.add('muted');
@@ -461,9 +607,19 @@
     if (event.key === 'ArrowLeft') goTo(current - 1);
   });
 
-  buildYearNav();
+  buildChapterNav();
   renderCurrent({ animate: false });
 
-  // Handy for review/debugging from DevTools without changing the experience.
-  window.__BIRTHDAY_STORY__ = { scenes, goTo };
+  // Review/debug helper in DevTools.
+  window.__BIRTHDAY_STORY__ = {
+    scenes,
+    goTo,
+    chapterStarts,
+    renderAt(index) {
+      if (index < 0 || index >= scenes.length) return;
+      current = index;
+      transitioning = false;
+      renderCurrent({ animate: false });
+    }
+  };
 })();
