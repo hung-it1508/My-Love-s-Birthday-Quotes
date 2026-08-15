@@ -343,16 +343,6 @@ window.MEDIA_LIBRARY = [
     "sort": "2024-08-13-2024_08_13.jpg"
   },
   {
-    "src": "assets/media/2024/2024_08_15(0).jpg",
-    "filename": "2024_08_15(0).jpg",
-    "type": "image",
-    "year": 2024,
-    "month": 8,
-    "day": 15,
-    "date": "15/08/2024",
-    "sort": "2024-08-15-2024_08_15(0).jpg"
-  },
-  {
     "src": "assets/media/2024/2024_08_15(1).jpg",
     "filename": "2024_08_15(1).jpg",
     "type": "image",
@@ -363,14 +353,24 @@ window.MEDIA_LIBRARY = [
     "sort": "2024-08-15-2024_08_15(1).jpg"
   },
   {
-    "src": "assets/media/2024/2024_08_16.mp4",
-    "filename": "2024_08_16.mp4",
+    "src": "assets/media/2024/2024_08_15(2).mp4",
+    "filename": "2024_08_15(2).mp4",
     "type": "video",
     "year": 2024,
     "month": 8,
-    "day": 16,
-    "date": "16/08/2024",
-    "sort": "2024-08-16-2024_08_16.mp4"
+    "day": 15,
+    "date": "15/08/2024",
+    "sort": "2024-08-15-2024_08_15(2).mp4"
+  },
+  {
+    "src": "assets/media/2024/2024_08_15(3).jpg",
+    "filename": "2024_08_15(3).jpg",
+    "type": "image",
+    "year": 2024,
+    "month": 8,
+    "day": 15,
+    "date": "15/08/2024",
+    "sort": "2024-08-15-2024_08_15(3).jpg"
   },
   {
     "src": "assets/media/2024/2024_08_17.jpg",
@@ -503,14 +503,44 @@ window.MEDIA_LIBRARY = [
     "sort": "2024-12-10-2024_12_10.jpg"
   },
   {
-    "src": "assets/media/2024/2024_12_23.jpg",
-    "filename": "2024_12_23.jpg",
+    "src": "assets/media/2024/2024_12_23(0).jpg",
+    "filename": "2024_12_23(0).jpg",
     "type": "image",
     "year": 2024,
     "month": 12,
     "day": 23,
     "date": "23/12/2024",
-    "sort": "2024-12-23-2024_12_23.jpg"
+    "sort": "2024-12-23-2024_12_23(0).jpg"
+  },
+  {
+    "src": "assets/media/2024/2024_12_23(1).jpg",
+    "filename": "2024_12_23(1).jpg",
+    "type": "image",
+    "year": 2024,
+    "month": 12,
+    "day": 23,
+    "date": "23/12/2024",
+    "sort": "2024-12-23-2024_12_23(1).jpg"
+  },
+  {
+    "src": "assets/media/2024/2024_12_23(2).jpg",
+    "filename": "2024_12_23(2).jpg",
+    "type": "image",
+    "year": 2024,
+    "month": 12,
+    "day": 23,
+    "date": "23/12/2024",
+    "sort": "2024-12-23-2024_12_23(2).jpg"
+  },
+  {
+    "src": "assets/media/2024/2024_12_23(3).jpg",
+    "filename": "2024_12_23(3).jpg",
+    "type": "image",
+    "year": 2024,
+    "month": 12,
+    "day": 23,
+    "date": "23/12/2024",
+    "sort": "2024-12-23-2024_12_23(3).jpg"
   },
   {
     "src": "assets/media/2025/2025_01_20(2).jpg",

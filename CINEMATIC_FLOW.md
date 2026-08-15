@@ -1,32 +1,24 @@
 # Cinematic Story Flow
 
-Bản này đổi cách kể chuyện từ timeline theo năm/tháng thành một mạch phim phi tuyến, nhưng giữ nguyên các paragraph cũ trong `data/story.js`.
+Bản hiện tại vẫn giữ mạch **mở ở những bức ảnh gần nhất → kéo ngược về tấm đầu tiên → đi lại qua các kỷ niệm → trở về hiện tại**, nhưng bỏ cách chia chương I, II, III… để câu chuyện bớt cảm giác được “đóng khung”.
 
 ## Mạch hiện tại
 
-1. **Cold open ở hiện tại** — những ảnh gần nhất của em xuất hiện trước.
-2. **Rewind** — 2026 → 2025 → 2024 → 2023.
-3. **I · Trước khi có “chúng mình”** — reveal 14.01.2023 và bức ảnh đầu tiên.
-4. **II · Mình tiến gần nhau hơn** — nói chuyện, Hải Phòng, reveal 03.03.2024.
-5. **III · Em xuất hiện nhiều hơn** — album bắt đầu đầy ảnh em.
-6. **IV · Những ngày bình thường** — chuyển trọng tâm từ cột mốc sang những ngày đời thường; có khoảng lặng “những ngày trong ảnh không có anh”.
-7. **V · Những lần đầu tiên** — FIRST BIRTHDAY / FIRST CHRISTMAS / FIRST TẾT / ONE YEAR.
-8. **VI · Mình không còn đếm nữa** — tình yêu dần giống cuộc sống; Huế, A80, Tà Xùa, những trải nghiệm mới.
-9. **VII · Trở lại hiện tại** — quay về chính các bức ảnh đã xuất hiện ở đầu phim.
-10. **Birthday payoff** — reflection → sinh nhật → “Anh đã tìm được điểm bắt đầu. Còn điểm cuối thì chắc chưa.” → lời chúc → future reveal.
+1. Mở bằng những bức ảnh gần hiện tại và câu: **“Anh đã ngồi xem lại đống ảnh này khá lâu.”**
+2. Kéo ngược về 14.01.2023 — tấm ảnh đầu tiên của hai đứa.
+3. Đi qua quãng hai đứa bắt đầu nói chuyện, Hải Phòng và 03.03.2024.
+4. Từ đó đi tiếp theo các kỷ niệm và ảnh, không chèn chapter card hay những đoạn “rút ra ý nghĩa” giữa các scene.
+5. Về lại các ảnh gần hiện tại, rồi mới sang phần sinh nhật và đoạn kết.
+
+## Cách hiển thị
+
+- Không còn **I–VII**.
+- Không còn các scene riêng kiểu “có những ngày trong ảnh không có anh” hay “một khoảng lặng”.
+- Thanh phía trên chỉ dùng **2023 / 2024 / 2025 / 2026** như điều hướng; góc trái chỉ hiện năm, không hiện title văn vẻ.
+- Trong mỗi kỷ niệm chỉ còn ngày, title của chính kỷ niệm, đoạn kể và media.
 
 ## Chỉnh nội dung ở đâu
 
-- **Paragraph/kỷ niệm cũ:** `data/story.js` trong `years` — vẫn giữ nguyên cấu trúc để bạn sửa nội dung như trước.
-- **Các câu dẫn mới, chapter, rewind, callback:** `data/story.js` → phần `cinema` ở cuối file.
-- **Thứ tự dựng phim / scene nào xuất hiện ở đâu:** `js/app.js` → hàm `buildScenes()`.
-- **Giao diện điện ảnh:** `css/scenes.css` → phần `CINEMATIC STORY FLOW`.
-- **Laptop/iPad/mobile:** `css/responsive.css` → phần `CINEMATIC FLOW RESPONSIVE TUNING`.
-
-## Điều hướng
-
-Thanh giữa phía trên không còn là năm 2023/2024/2025/2026. Nó là **7 chương I–VII**, để người xem không bị cảm giác đang đọc timeline.
-
-## Ghi chú
-
-Ảnh/video vẫn dùng `object-fit: contain` / kích thước tự nhiên nên không cố cắt ảnh để nhét vào khung. Media của mỗi kỷ niệm tiếp tục mở được lightbox khi bấm vào.
+- Paragraph, title, kỷ niệm: `data/story.js`.
+- Thứ tự scene và cách gom ảnh/video: `js/app.js`.
+- Media gốc: `data/media.js` và thư mục `assets/media/`.
